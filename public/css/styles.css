@@ -1,0 +1,84 @@
+/*HEADER*/
+.navbar p{
+	color: white;
+	margin-bottom: 0rem;
+}
+
+.titulo_subheader{
+	margin-top: 20px;
+}
+
+.boton_ordenar{
+	min-width: 200px;
+}
+
+hr {
+  border: 0;
+  clear:both;
+  display:block;
+  width: 96%;               
+  background-color: black;
+  height: 1px;
+}
+/*HEADER*/
+
+/***FILTROS***/
+.multiselect-wrapper .multiselect-input{
+	width: 100px;
+}
+
+.multiselect-container .btn{
+	text-align: left;
+}
+
+.multiselect-container>li>a>label>input[type=checkbox] {
+    margin-left: -20px;
+}
+
+.dropdown-menu{
+	width: 100%
+}
+
+/***FILTROS***/
+
+
+
+
+
+
+
+
+
+
+
+
+/*FOOTER*/
+.contenido_footer{
+	width: 100%;
+	text-align: center;
+}
+
+.contenido_footer a{
+	color: white;
+	cursor: pointer;
+}
+/*FOOTER*/
+
+
+
+/****MEDIA QUERYS****/
+
+@media only screen and (max-width: 765px) {
+  .boton_filtros{
+  	margin-top: 30px;
+  	margin-left: 30px;
+  }
+
+  .fila_filtros{
+  	margin-left: 20px;
+  	margin-bottom: 100px;
+  }
+}
+
+
+/****MEDIA QUERYS****/
