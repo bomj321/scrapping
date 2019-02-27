@@ -1,7 +1,7 @@
 
   $(document).ready(function() {
         $('#select1').multiselect({
-        	buttonClass: 'btn btn-success',
+        	buttonClass: 'btn btn-secondary',
         	includeResetOption: true,
             includeResetDivider: true,
             buttonWidth: '100%',
@@ -10,7 +10,7 @@
         });
 
          $('#select2').multiselect({
-        	buttonClass: 'btn btn-primary',
+        	buttonClass: 'btn btn-secondary',
         	includeResetOption: true,
             includeResetDivider: true,
             buttonWidth: '100%',
@@ -20,7 +20,7 @@
 
 
          $('#select3').multiselect({
-        	buttonClass: 'btn btn-danger',
+        	buttonClass: 'btn btn-secondary',
         	includeResetOption: true,
             includeResetDivider: true,
             buttonWidth: '100%',
@@ -29,7 +29,7 @@
         });
 
           $('#select4').multiselect({
-        	buttonClass: 'btn btn-warning',
+        	buttonClass: 'btn btn-secondary',
         	includeResetOption: true,
             includeResetDivider: true,
             buttonWidth: '100%',
@@ -38,7 +38,7 @@
         });
 
            $('#select5').multiselect({
-        	buttonClass: 'btn btn-info',
+        	buttonClass: 'btn btn-secondary',
         	includeResetOption: true,
             includeResetDivider: true,
             buttonWidth: '100%',
