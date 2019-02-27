@@ -1,3 +1,10 @@
+/*ESTILOS GENERALES*/
+.container-fluid{
+  margin-bottom: 200px;
+}
+/*ESTILOS GENERALES*/
+
+
 /*HEADER*/
 .navbar p{
 	color: white;
@@ -16,7 +23,7 @@ hr {
   border: 0;
   clear:both;
   display:block;
-  width: 96%;               
+  width: 96%;
   background-color: black;
   height: 1px;
 }
@@ -39,10 +46,53 @@ hr {
 	width: 100%
 }
 
+.fila_hr{
+  margin-top: 35px;
+}
+
+.multiselect-container>li>a{
+  color: black;
+  font-size: 15px;
+}
+
 /***FILTROS***/
 
 
 
+/***BODY***/
+.card{
+  margin-top: 80px;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.card-header{
+  max-height: 80px;
+   overflow:hidden;
+  display:inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.card img{
+  width: 100%;
+  max-height: 280px;
+}
+
+.span_precio{
+  color: red;
+  font-size: 25px;
+  margin-left: 10px;
+  font-weight: 800;
+}
+
+.card button{
+  font-size: 25px;
+  font-weight: 700;
+}
+
+
+/***BODY***/
 
 
 
@@ -53,6 +103,9 @@ hr {
 
 
 /*FOOTER*/
+.fixed-bottom{
+  margin-top: 200px;
+}
 .contenido_footer{
 	width: 100%;
 	text-align: center;

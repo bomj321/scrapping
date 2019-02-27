@@ -269,6 +269,14 @@
 		</select>
 
 	</div>
+</div>
+
+<div class="clearfix"></div>
+<div class="row fila_hr">
 	<hr>
 </div>
+
+
+
+
 
