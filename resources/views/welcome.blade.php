@@ -9,24 +9,24 @@
         <!-- Fonts -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <!--BOOTSTRAP-->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">  
-<!--BOOTSTRAP-->   
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
+<!--BOOTSTRAP-->
 
 <!--ICONOS-->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
-<!--ICONOS--> 
+<!--ICONOS-->
 
 <!--ESTILOS PERSONALIZADOS-->
 <link href="{{ asset('css/multiselect.css') }}" rel="stylesheet" type="text/css" >
 <link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css" >
 
-<!--ESTILOS PERSONALIZADOS-->        
+<!--ESTILOS PERSONALIZADOS-->
     </head>
 
     <body>
 @include('includes.header')
 
-    
+
 @include('includes.body')
 
 
@@ -47,6 +47,7 @@
 <script src="{{ asset('js/multiselect.min.js') }}"></script>
 
 <!--MULTISELECT-->
+
 <!--SCRIPTS PERSONALIZADOS-->
 <script src="{{ asset('js/app.js') }}"></script>
 

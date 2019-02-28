@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/scraping','ScrapingController@example');
+
+Route::get('/scraping-zomzom','ScrapingZomzomController@scrapping_start');
+
