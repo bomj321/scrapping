@@ -11,11 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/scraping','ScrapingController@example');
 
-Route::get('/scraping','ScrapingController@example');
-
+Route::get('/','ScrapingZomzomController@scrapping_welcome');
 Route::get('/scraping-zomzom','ScrapingZomzomController@scrapping_start');
-
