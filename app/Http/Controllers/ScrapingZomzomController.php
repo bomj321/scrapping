@@ -2,34 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use GuzzleHttp\Middleware;
 use App\Http\Requests;
 use GuzzleHttp\Client;
-use GuzzleHttp\Middleware;
 use App\Product;
-use Illuminate\Support\Facades\DB;
-
 
 class ScrapingZomzomController extends Controller
 {
 
-            public function scrapping_welcome(){
-
-              $products = Product::all();
-
-              return view('welcome', ['products' => $products]);
-
-            }
-
-
-
-
-
-
+/************CODIGO PARA EL SCRAPPING********************/
             public function scrapping_start(Client $client)
             {
+                  DB::table('products')->truncate();
+
                     $productsArray = array();
-                   for ($a=0; $a < 1 ; $a++) {
+                   for ($a=0; $a < 16 ; $a++) {
 
                     $response = $client->request('POST', 'https://www.zoomzon.es/getOfertasFiltradas', [
                         'json'    => ['page' => $a],
@@ -100,8 +89,25 @@ class ScrapingZomzomController extends Controller
                  $seccion_precio_anterior = $productsArray['precio_anterior'][$c];
                  $seccion_precio_oferta   = $productsArray['precio_oferta'][$c];
 
+                 DB::table('products')->insert(
+                    [
+                      'seccion'         => $seccion_producto,
+                      'modelo'          => $seccion_modelo,
+                      'imagen'          => $seccion_imagen,
+                      'descuento'       => $seccion_descuento,
+                      'link'            => $seccion_link,
+                      'talla'           => $seccion_talla,
+                      'precio_anterior' => $seccion_precio_anterior,
+                      'precio_oferta'   => $seccion_precio_oferta,
+                      'updated_at'      => date("Y-m-d H:i:s"),
+                      'created_at'      => date("Y-m-d H:i:s"),
+                   ]
+                );
+
         }
         /*******************GUARDAR PRODUCTOS***************/
 
             }
+/************CODIGO PARA EL SCRAPPING********************/
+
 }

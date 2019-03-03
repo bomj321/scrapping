@@ -1,11 +1,17 @@
 /*ESTILOS GENERALES*/
 .container-fluid{
   margin-bottom: 200px;
+
 }
 /*ESTILOS GENERALES*/
 
 
 /*HEADER*/
+.navbar{
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
 .navbar p{
 	color: white;
 	margin-bottom: 0rem;
@@ -65,6 +71,8 @@ hr {
   width: 20px;
   height: 20px;
 }
+
+
 /***FILTROS***/
 
 
@@ -75,6 +83,14 @@ hr {
   margin-left: 40px;
   margin-right: 40px;
   border: none
+}
+
+.product_seccion{
+  text-align: center;
+  max-width: 100%;
+  overflow:hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .card-header{
@@ -94,6 +110,7 @@ hr {
 
 .card img{
   width: 100%;
+  min-height: 280px;
   max-height: 280px;
 }
 
@@ -114,17 +131,29 @@ hr {
 }
 
 .circulo_rebaja{
+  width: 50px;
+  height:50px;
   margin-top: -40px;
   position:absolute;
   margin-left: 7rem;
   border: 1px solid #d9534f;
   border-radius: 50px;
-  padding: 15px 5px 15px 5px;
+  padding: 13px 5px 15px 5px;
   z-index: 1000;
   font-size: 15px;
   font-weight: bold;
   background-color: #d9534f;
   color: white;
+}
+
+.button_product_talla{
+  background-color: white;
+  border: 1px solid gray;
+  color: gray;
+}
+
+.button_product{
+  font-weight: 900;
 }
 
 /***BODY***/
@@ -171,31 +200,31 @@ hr {
 
 @media only screen and (max-width: 1652px) {
   .circulo_rebaja{
-    margin-left: 4rem;
+    margin-left: 8rem;
   }
 }
 
 @media only screen and (max-width: 1300px) {
   .circulo_rebaja{
-    margin-left: 2rem;
+    margin-left: 6rem;
   }
 }
 
 @media only screen and (max-width: 960px) {
   .circulo_rebaja{
-    margin-left: 5rem;
+    margin-left: 8rem;
   }
 }
 
 @media only screen and (max-width: 728px) {
   .circulo_rebaja{
-    margin-left: 9rem;
+    margin-left: 12rem;
   }
 }
 
 @media only screen and (max-width: 495px) {
   .circulo_rebaja{
-    margin-left: 4rem;
+    margin-left: 7rem;
   }
 }
 

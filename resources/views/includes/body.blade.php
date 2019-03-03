@@ -1,29 +1,22 @@
-<div class="container-fluid">
 
-	<div class="row">
+	<div class="row" id="list_products">
 
-@foreach ($products as $product)
 
-		<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12">
-			<div class="card text-center">
-				  <div class="card-header">
-				  	<h4>INVICTA <span class="circulo_rebaja">-40%</span> </h4>
-				    INVICTA 9307 PRO DIVER RELOJ UNISEX ACERO INOXIDABLE CUARZO ESFERA NEGRO
-
-				  </div>
-					  <div class="card-body">
-						    <img src="{{asset('images/reloj1.jpg')}}">
-					  </div>
-				  <div class="card-footer text-muted">
-				  	<button class="btn btn-defaukt">TALLA UNICA</button>
-						<p><span class="precio_linea">139$</span> <span class="span_precio">1235$</span></p>
-				  	<button class="btn btn-info">COMPRAR <span><i class="fab fa-amazon"></i></span></button>
-				  </div>
-				</div>
-		</div>
-
-	@endforeach
-
+					<div class="col-lg-3 col-md-6 col-sm-12 col-xs-12" v-for="product in products">
+							<div class="card text-center">
+								  <div class="card-header">
+								  	<h4><div class="product_seccion">@{{ product.seccion }}</div> <span class="circulo_rebaja">@{{ product.descuento }}%</span> </h4>
+								    @{{ product.modelo }}
+								  </div>
+									  <div class="card-body">
+										    <img  v-bind:src="product.imagen">
+									  </div>
+								  <div class="card-footer text-muted">
+										<a v-bind:href="product.link" type="button" class="btn button_product_talla"> @{{ product.talla }}</a>
+										<p><span class="precio_linea"> @{{ product.precio_anterior }}$</span> <span class="span_precio">@{{ product.precio_oferta }}$</span></p>
+										<a v-bind:href="product.link" type="button" class="btn btn-dark btn-block btn-lg button_product">COMPRAR <span><i class="fab fa-amazon"></i></span></a>
+								  </div>
+								</div>
+					</div>
 
 	</div>
-</div>

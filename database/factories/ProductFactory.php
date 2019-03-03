@@ -6,7 +6,7 @@ $factory->define(App\Product::class, function (Faker $faker) {
     return [
       'seccion'         => $faker->name,
       'modelo'          => $faker->text,
-      'imagen'          => $faker->imageUrl($width = 640, $height = 480),
+      'imagen'          => $faker->imageUrl($width = 400, $height = 680),
       'descuento'       => $faker->randomDigitNotNull, // secret
       'link'            => $faker->url,
       'talla'           => $faker->randomDigitNotNull,

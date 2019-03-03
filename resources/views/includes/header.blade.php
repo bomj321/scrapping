@@ -185,7 +185,7 @@
 
 	</div>
 
-	<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 mt-3">
+	<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 mt-3 select_talla">
 		<label for="">Talla</label>
 			<select id='select5' multiple>
 

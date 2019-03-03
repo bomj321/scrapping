@@ -24,6 +24,8 @@
     </head>
 
     <body>
+      <div class="container-fluid">
+
 @include('includes.header')
 
 
@@ -31,6 +33,8 @@
 
 
 @include('includes.footer')
+</div>
+
     </body>
 
 
@@ -47,6 +51,12 @@
 <script src="{{ asset('js/multiselect.min.js') }}"></script>
 
 <!--MULTISELECT-->
+
+<!--VUEJS AND AXIOS-->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<!--VUEJS AND AXIOS-->
 
 <!--SCRIPTS PERSONALIZADOS-->
 <script src="{{ asset('js/app.js') }}"></script>

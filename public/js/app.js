@@ -1,4 +1,4 @@
-
+/*********SECCION DE LOS FILTROS******************/
   $(document).ready(function() {
         $('#select1').multiselect({
         	buttonClass: 'btn btn-secondary',
@@ -46,3 +46,32 @@
 
         });
     });
+/*********SECCION DE LOS FILTROS******************/
+
+
+/*********JQUERY EVENTOS*********/
+
+/*********JQUERY EVENTOS*********/
+
+/*VUEJS*/
+
+new Vue({
+	el: '#list_products',
+	created: function() {
+		this.getProducts();
+	},
+	data: {
+		products: [],
+
+	},
+	methods: {
+		getProducts: function() {
+			var urlProducts = 'products';
+			axios.get(urlProducts).then(response => {
+				this.products = response.data.products
+			});
+		}
+	}
+});
+
+/*VUEJS*/

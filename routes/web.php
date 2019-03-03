@@ -13,5 +13,13 @@
 
 //Route::get('/scraping','ScrapingController@example');
 
-Route::get('/','ScrapingZomzomController@scrapping_welcome');
+//Route::get('/','ScrapingZomzomController@scrapping_welcome');
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
 Route::get('/scraping-zomzom','ScrapingZomzomController@scrapping_start');
+
+
+Route::resource('/products','ProductsApiController', ['except' => 'show', 'create', 'edit','update','destroy','store']);
