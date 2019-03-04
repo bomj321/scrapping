@@ -17,9 +17,11 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');;
 
-Route::get('/scraping-zomzom','ScrapingZomzomController@scrapping_start');
 
+/*RUTA PARA EL SCRAPPING*/
+Route::get('/scraping-zomzom/{user}/{password}','ScrapingZomzomController@scrapping_start');
+/*RUTA PARA EL SCRAPPING*/
 
 Route::resource('/products','ProductsApiController', ['except' => 'show', 'create', 'edit','update','destroy','store']);

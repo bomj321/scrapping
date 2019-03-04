@@ -18,5 +18,5 @@ class ProductsApiController extends Controller
 
           return ['products' => $products];
     }
-  
+
 }
