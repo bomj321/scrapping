@@ -8,9 +8,8 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
-
-Vue.component('infinite', 	require('vue-infinite-loading'));
-
+Vue.component('products', require('./components/ProductsComponent.vue').default);
+Vue.component('infinite', require('vue-infinite-loading'));
 
 window.Multiselect = require('bootstrap-multiselect');
 /*********SECCION DE LOS FILTROS******************/
@@ -68,20 +67,6 @@ window.Multiselect = require('bootstrap-multiselect');
 
 
 const app = new Vue({
-  el: '#list_products',
-  created: function() {
-    this.getProducts();
-  },
-  data: {
-    products: [],
+  el: '#list_products'
 
-  },
-  methods: {
-    getProducts: function() {
-      var urlProducts = 'products?page=1';
-      axios.get(urlProducts).then(response => {
-        this.products = response.data.products.data
-      });
-    }
-  }
 });

@@ -1754,6 +1754,59 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ProductsComponent.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ProductsComponent.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  created: function created() {
+    this.getProducts();
+  },
+  data: function data() {
+    return {
+      products: []
+    };
+  },
+  methods: {
+    getProducts: function getProducts() {
+      var _this = this;
+
+      var urlProducts = 'products?page=1';
+      axios.get(urlProducts).then(function (response) {
+        _this.products = response.data.products.data;
+      });
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/bootstrap-multiselect/dist/js/bootstrap-multiselect.js":
 /*!*****************************************************************************!*\
   !*** ./node_modules/bootstrap-multiselect/dist/js/bootstrap-multiselect.js ***!
@@ -1763,24 +1816,24 @@ module.exports = {
 
 /**
  * Bootstrap Multiselect (https://github.com/davidstutz/bootstrap-multiselect)
- * 
+ *
  * Apache License, Version 2.0:
  * Copyright (c) 2012 - 2015 David Stutz
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a
  * copy of the License at http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
  * License for the specific language governing permissions and limitations
  * under the License.
- * 
+ *
  * BSD 3-Clause License:
  * Copyright (c) 2012 - 2015 David Stutz
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
  *    - Redistributions of source code must retain the above copyright notice,
@@ -1791,7 +1844,7 @@ module.exports = {
  *    - Neither the name of David Stutz nor the names of its contributors may be
  *      used to endorse or promote products derived from this software without
  *      specific prior written permission.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
  * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
@@ -1901,12 +1954,12 @@ module.exports = {
     function Multiselect(select, options) {
 
         this.$select = $(select);
-        
+
         // Placeholder via data attributes
         if (this.$select.attr("data-placeholder")) {
             options.nonSelectedText = this.$select.data("placeholder");
         }
-        
+
         this.options = this.mergeOptions($.extend({}, options, this.$select.data()));
 
         // Initialization.
@@ -1922,7 +1975,7 @@ module.exports = {
         this.options.onDropdownHide = $.proxy(this.options.onDropdownHide, this);
         this.options.onDropdownShown = $.proxy(this.options.onDropdownShown, this);
         this.options.onDropdownHidden = $.proxy(this.options.onDropdownHidden, this);
-        
+
         // Build select all if enabled.
         this.buildContainer();
         this.buildButton();
@@ -1937,7 +1990,7 @@ module.exports = {
         if (this.options.disableIfEmpty && $('option', this.$select).length <= 0) {
             this.disable();
         }
-        
+
         this.$select.hide().after(this.$container);
     };
 
@@ -1948,7 +2001,7 @@ module.exports = {
              * Default text function will either print 'None selected' in case no
              * option is selected or a list of the selected options up to a length
              * of 3 selected options.
-             * 
+             *
              * @param {jQuery} options
              * @param {jQuery} select
              * @returns {String}
@@ -1957,9 +2010,9 @@ module.exports = {
                 if (options.length === 0) {
                     return this.nonSelectedText;
                 }
-                else if (this.allSelectedText 
-                            && options.length === $('option', $(select)).length 
-                            && $('option', $(select)).length !== 1 
+                else if (this.allSelectedText
+                            && options.length === $('option', $(select)).length
+                            && $('option', $(select)).length !== 1
                             && this.multiple) {
 
                     if (this.selectAllNumber) {
@@ -1975,18 +2028,18 @@ module.exports = {
                 else {
                     var selected = '';
                     var delimiter = this.delimiterText;
-                    
+
                     options.each(function() {
                         var label = ($(this).attr('label') !== undefined) ? $(this).attr('label') : $(this).text();
                         selected += label + delimiter;
                     });
-                    
+
                     return selected.substr(0, selected.length - 2);
                 }
             },
             /**
              * Updates the title of the button similar to the buttonText function.
-             * 
+             *
              * @param {jQuery} options
              * @param {jQuery} select
              * @returns {@exp;selected@call;substr}
@@ -1998,7 +2051,7 @@ module.exports = {
                 else {
                     var selected = '';
                     var delimiter = this.delimiterText;
-                    
+
                     options.each(function () {
                         var label = ($(this).attr('label') !== undefined) ? $(this).attr('label') : $(this).text();
                         selected += label + delimiter;
@@ -2017,9 +2070,9 @@ module.exports = {
             },
             /**
              * Triggered on change of the multiselect.
-             * 
+             *
              * Not triggered when selecting/deselecting options manually.
-             * 
+             *
              * @param {jQuery} option
              * @param {Boolean} checked
              */
@@ -2044,25 +2097,25 @@ module.exports = {
             },
             /**
              * Triggered after the dropdown is shown.
-             * 
+             *
              * @param {jQuery} event
              */
             onDropdownShown: function(event) {
-                
+
             },
             /**
              * Triggered after the dropdown is hidden.
-             * 
+             *
              * @param {jQuery} event
              */
             onDropdownHidden: function(event) {
-                
+
             },
             /**
              * Triggered on select all.
              */
             onSelectAll: function() {
-                
+
             },
             enableHTML: false,
             buttonClass: 'btn btn-default',
@@ -2077,21 +2130,21 @@ module.exports = {
             checkboxName: false,
             includeSelectAllOption: false,
             includeSelectAllIfMoreThan: 0,
-            selectAllText: ' Select all',
+            selectAllText: ' Seleccionar Todo',
             selectAllValue: 'multiselect-all',
             selectAllName: false,
             selectAllNumber: true,
             enableFiltering: false,
             enableCaseInsensitiveFiltering: false,
             enableClickableOptGroups: false,
-            filterPlaceholder: 'Search',
+            filterPlaceholder: 'Buscar',
             // possible options: 'text', 'value', 'both'
             filterBehavior: 'text',
             includeFilterClearBtn: true,
             preventInputChangeEvent: false,
-            nonSelectedText: 'None selected',
-            nSelectedText: 'selected',
-            allSelectedText: 'All selected',
+            nonSelectedText: 'Ninguno Seleccionado',
+            nSelectedText: 'seleccionado',
+            allSelectedText: 'Todos seleccionado',
             numberDisplayed: 3,
             disableIfEmpty: false,
             delimiterText: ', ',
@@ -2183,7 +2236,7 @@ module.exports = {
 
         /**
          * Build the dropdown options and binds all nessecary events.
-         * 
+         *
          * Uses createDivider and createOptionValue to create the necessary options.
          */
         buildDropdownOptions: function() {
@@ -2194,7 +2247,7 @@ module.exports = {
                 // Support optgroups and options without a group simultaneously.
                 var tag = $element.prop('tagName')
                     .toLowerCase();
-            
+
                 if ($element.prop('value') === this.options.selectAllValue) {
                     return;
                 }
@@ -2300,12 +2353,12 @@ module.exports = {
                     return false;
                 }
             });
-        
+
             $('li a', this.$ul).on('touchstart click', $.proxy(function(event) {
                 event.stopPropagation();
 
                 var $target = $(event.target);
-                
+
                 if (event.shiftKey && this.options.multiple) {
                     if($target.is("label")){ // Handles checkbox selection manually (see https://github.com/davidstutz/bootstrap-multiselect/issues/431)
                         event.preventDefault();
@@ -2317,39 +2370,39 @@ module.exports = {
                     if (this.lastToggledInput !== null && this.lastToggledInput !== $target) { // Make sure we actually have a range
                         var from = $target.closest("li").index();
                         var to = this.lastToggledInput.closest("li").index();
-                        
+
                         if (from > to) { // Swap the indices
                             var tmp = to;
                             to = from;
                             from = tmp;
                         }
-                        
+
                         // Make sure we grab all elements since slice excludes the last index
                         ++to;
-                        
+
                         // Change the checkboxes and underlying options
                         var range = this.$ul.find("li").slice(from, to).find("input");
-                        
+
                         range.prop('checked', checked);
-                        
+
                         if (this.options.selectedClass) {
                             range.closest('li')
                                 .toggleClass(this.options.selectedClass, checked);
                         }
-                        
+
                         for (var i = 0, j = range.length; i < j; i++) {
                             var $checkbox = $(range[i]);
 
                             var $option = this.getOptionByValue($checkbox.val());
 
                             $option.prop('selected', checked);
-                        }                   
+                        }
                     }
-                    
+
                     // Trigger the select "change" event
                     $target.trigger("change");
                 }
-                
+
                 // Remembers last clicked option
                 if($target.is("input") && !$target.closest("li").is(".multiselect-item")){
                     this.lastToggledInput = $target;
@@ -2451,7 +2504,7 @@ module.exports = {
             else {
                 $label.text(" " + label);
             }
-        
+
             var $checkbox = $('<input/>').attr('type', inputType);
 
             if (this.options.checkboxName) {
@@ -2509,14 +2562,14 @@ module.exports = {
 
             // Add a header for the group.
             var $li = $(this.options.templates.liGroup);
-            
+
             if (this.options.enableHTML) {
                 $('label', $li).html(groupName);
             }
             else {
                 $('label', $li).text(groupName);
             }
-            
+
             if (this.options.enableClickableOptGroups) {
                 $li.addClass('multiselect-group-clickable');
             }
@@ -2535,14 +2588,14 @@ module.exports = {
 
         /**
          * Build the selct all.
-         * 
+         *
          * Checks if a select all has already been created.
          */
         buildSelectAll: function() {
             if (typeof this.options.selectAllValue === 'number') {
                 this.options.selectAllValue = this.options.selectAllValue.toString();
             }
-            
+
             var alreadyHasSelectAll = this.hasSelectAll();
 
             if (!alreadyHasSelectAll && this.options.includeSelectAllOption && this.options.multiple
@@ -2555,21 +2608,21 @@ module.exports = {
 
                 var $li = $(this.options.templates.li);
                 $('label', $li).addClass("checkbox");
-                
+
                 if (this.options.enableHTML) {
                     $('label', $li).html(" " + this.options.selectAllText);
                 }
                 else {
                     $('label', $li).text(" " + this.options.selectAllText);
                 }
-                
+
                 if (this.options.selectAllName) {
                     $('label', $li).prepend('<input type="checkbox" name="' + this.options.selectAllName + '" />');
                 }
                 else {
                     $('label', $li).prepend('<input type="checkbox" />');
                 }
-                
+
                 var $checkbox = $('input', $li);
                 $checkbox.val(this.options.selectAllValue);
 
@@ -2596,7 +2649,7 @@ module.exports = {
 
                     this.$filter = $(this.options.templates.filter);
                     $('input', this.$filter).attr('placeholder', this.options.filterPlaceholder);
-                    
+
                     // Adds optional filter clear button
                     if(this.options.includeFilterClearBtn){
                         var clearBtn = $(this.options.templates.filterClearBtn);
@@ -2608,7 +2661,7 @@ module.exports = {
                         }, this));
                         this.$filter.find('.input-group').append(clearBtn);
                     }
-                    
+
                     this.$ul.prepend(this.$filter);
 
                     this.$filter.val(this.query).on('click', function(event) {
@@ -2618,7 +2671,7 @@ module.exports = {
                         if (event.which === 13) {
                           event.preventDefault();
                         }
-                        
+
                         // This is useful to catch "keydown" events after the browser has updated the control.
                         clearTimeout(this.searchTimeout);
 
@@ -2657,7 +2710,7 @@ module.exports = {
 
                                         // Toggle current element (group or group item) according to showElement boolean.
                                         $(element).toggle(showElement).toggleClass('filter-hidden', !showElement);
-                                        
+
                                         // Differentiate groups and group items.
                                         if ($(element).hasClass('multiselect-group')) {
                                             // Remember group status.
@@ -2669,7 +2722,7 @@ module.exports = {
                                             if (showElement) {
                                                 $(currentGroup).show().removeClass('filter-hidden');
                                             }
-                                            
+
                                             // Show all group items when group name satisfies filter.
                                             if (!showElement && currentGroupVisible) {
                                                 $(element).show().removeClass('filter-hidden');
@@ -2740,10 +2793,10 @@ module.exports = {
 
         /**
          * Select all options of the given values.
-         * 
+         *
          * If triggerOnChange is set to true, the on change event is triggered if
          * and only if one value is passed.
-         * 
+         *
          * @param {Array} selectValues
          * @param {Boolean} triggerOnChange
          */
@@ -2765,11 +2818,11 @@ module.exports = {
                 if($option === undefined || $checkbox === undefined) {
                     continue;
                 }
-                
+
                 if (!this.options.multiple) {
                     this.deselectAll(false);
                 }
-                
+
                 if (this.options.selectedClass) {
                     $checkbox.closest('li')
                         .addClass(this.options.selectedClass);
@@ -2777,7 +2830,7 @@ module.exports = {
 
                 $checkbox.prop('checked', true);
                 $option.prop('selected', true);
-                
+
                 if (triggerOnChange) {
                     this.options.onChange($option, true);
                 }
@@ -2798,10 +2851,10 @@ module.exports = {
 
         /**
          * Deselects all options of the given values.
-         * 
+         *
          * If triggerOnChange is set to true, the on change event is triggered, if
          * and only if one value is passed.
-         * 
+         *
          * @param {Array} deselectValues
          * @param {Boolean} triggerOnChange
          */
@@ -2831,7 +2884,7 @@ module.exports = {
 
                 $checkbox.prop('checked', false);
                 $option.prop('selected', false);
-                
+
                 if (triggerOnChange) {
                     this.options.onChange($option, false);
                 }
@@ -2840,7 +2893,7 @@ module.exports = {
             this.updateButtonText();
             this.updateSelectAll();
         },
-        
+
         /**
          * Selects all enabled & visible options.
          *
@@ -2855,7 +2908,7 @@ module.exports = {
             var visibleCheckboxes = allCheckboxes.filter(":visible");
             var allCheckboxesCount = allCheckboxes.length;
             var visibleCheckboxesCount = visibleCheckboxes.length;
-            
+
             if(justVisible) {
                 visibleCheckboxes.prop('checked', true);
                 $("li:not(.divider):not(.disabled)", this.$ul).filter(":visible").addClass(this.options.selectedClass);
@@ -2864,7 +2917,7 @@ module.exports = {
                 allCheckboxes.prop('checked', true);
                 $("li:not(.divider):not(.disabled)", this.$ul).addClass(this.options.selectedClass);
             }
-                
+
             if (allCheckboxesCount === visibleCheckboxesCount || justVisible === false) {
                 $("option:enabled", this.$select).prop('selected', true);
             }
@@ -2872,12 +2925,12 @@ module.exports = {
                 var values = visibleCheckboxes.map(function() {
                     return $(this).val();
                 }).get();
-                
+
                 $("option:enabled", this.$select).filter(function(index) {
                     return $.inArray($(this).val(), values) !== -1;
                 }).prop('selected', true);
             }
-            
+
             if (triggerOnSelectAll) {
                 this.options.onSelectAll();
             }
@@ -2885,26 +2938,26 @@ module.exports = {
 
         /**
          * Deselects all options.
-         * 
+         *
          * If justVisible is true or not specified, only visible options are deselected.
-         * 
+         *
          * @param {Boolean} justVisible
          */
         deselectAll: function (justVisible) {
             var justVisible = typeof justVisible === 'undefined' ? true : justVisible;
-            
-            if(justVisible) {              
+
+            if(justVisible) {
                 var visibleCheckboxes = $("li input[type='checkbox']:not(:disabled)", this.$ul).filter(":visible");
                 visibleCheckboxes.prop('checked', false);
-                
+
                 var values = visibleCheckboxes.map(function() {
                     return $(this).val();
                 }).get();
-                
+
                 $("option:enabled", this.$select).filter(function(index) {
                     return $.inArray($(this).val(), values) !== -1;
                 }).prop('selected', false);
-                
+
                 if (this.options.selectedClass) {
                     $("li:not(.divider):not(.disabled)", this.$ul).filter(":visible").removeClass(this.options.selectedClass);
                 }
@@ -2912,7 +2965,7 @@ module.exports = {
             else {
                 $("li input[type='checkbox']:enabled", this.$ul).prop('checked', false);
                 $("option:enabled", this.$select).prop('selected', false);
-                
+
                 if (this.options.selectedClass) {
                     $("li:not(.divider):not(.disabled)", this.$ul).removeClass(this.options.selectedClass);
                 }
@@ -2921,7 +2974,7 @@ module.exports = {
 
         /**
          * Rebuild the plugin.
-         * 
+         *
          * Rebuilds the dropdown, the filter and the select all option.
          */
         rebuild: function() {
@@ -2936,14 +2989,14 @@ module.exports = {
 
             this.updateButtonText();
             this.updateSelectAll();
-            
+
             if (this.options.disableIfEmpty && $('option', this.$select).length <= 0) {
                 this.disable();
             }
             else {
                 this.enable();
             }
-            
+
             if (this.options.dropRight) {
                 this.$ul.addClass('pull-right');
             }
@@ -2953,21 +3006,21 @@ module.exports = {
          * The provided data will be used to build the dropdown.
          */
         dataprovider: function(dataprovider) {
-            
+
             var groupCounter = 0;
             var $select = this.$select.empty();
-            
+
             $.each(dataprovider, function (index, option) {
                 var $tag;
-                
+
                 if ($.isArray(option.children)) { // create optiongroup tag
                     groupCounter++;
-                    
+
                     $tag = $('<optgroup/>').attr({
                         label: option.label || 'Group ' + groupCounter,
                         disabled: !!option.disabled
                     });
-                    
+
                     forEach(option.children, function(subOption) { // add children option tags
                         $tag.append($('<option/>').attr({
                             value: subOption.value,
@@ -2987,10 +3040,10 @@ module.exports = {
                         disabled: !!option.disabled
                     });
                 }
-                
+
                 $select.append($tag);
             });
-            
+
             this.rebuild();
         },
 
@@ -3050,7 +3103,7 @@ module.exports = {
                 var checkedBoxesLength = allBoxes.filter(":checked").length;
                 var selectAllLi  = $("li.multiselect-all", this.$ul);
                 var selectAllInput = selectAllLi.find("input");
-                
+
                 if (checkedBoxesLength > 0 && checkedBoxesLength === allBoxesLength) {
                     selectAllInput.prop("checked", true);
                     selectAllLi.addClass(this.options.selectedClass);
@@ -3068,7 +3121,7 @@ module.exports = {
          */
         updateButtonText: function() {
             var options = this.getSelected();
-            
+
             // First update the displayed button text.
             if (this.options.enableHTML) {
                 $('.multiselect .multiselect-selected-text', this.$container).html(this.options.buttonText(options, this.$select));
@@ -3076,7 +3129,7 @@ module.exports = {
             else {
                 $('.multiselect .multiselect-selected-text', this.$container).text(this.options.buttonText(options, this.$select));
             }
-            
+
             // Now update the title attribute of the button.
             $('.multiselect', this.$container).attr('title', this.options.buttonTitle(options, this.$select));
         },
@@ -3162,7 +3215,7 @@ module.exports = {
             // Call multiselect method.
             if (typeof option === 'string') {
                 data[option](parameter, extraOptions);
-                
+
                 if (option === 'destroy') {
                     $(this).data('multiselect', false);
                 }
@@ -38224,6 +38277,208 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ProductsComponent.vue?vue&type=template&id=5ecce49e&":
+/*!********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ProductsComponent.vue?vue&type=template&id=5ecce49e& ***!
+  \********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "row" },
+    _vm._l(_vm.products, function(product) {
+      return _c(
+        "div",
+        { staticClass: "col-lg-3 col-md-6 col-sm-12 col-xs-12" },
+        [
+          _c("div", { staticClass: "card text-center" }, [
+            _c("div", { staticClass: "card-header" }, [
+              _c("h4", [
+                _c("div", { staticClass: "product_seccion" }, [
+                  _vm._v(_vm._s(product.seccion))
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "circulo_rebaja" }, [
+                  _vm._v(_vm._s(product.descuento) + "%")
+                ])
+              ]),
+              _vm._v(
+                "\n                  " +
+                  _vm._s(product.modelo) +
+                  "\n                "
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" }, [
+              _c("img", { attrs: { src: product.imagen } })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-footer text-muted" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "btn button_product_talla",
+                  attrs: { href: product.link, type: "button" }
+                },
+                [_vm._v(" " + _vm._s(product.talla))]
+              ),
+              _vm._v(" "),
+              _c("p", [
+                _c("span", { staticClass: "precio_linea" }, [
+                  _vm._v(" " + _vm._s(product.precio_anterior) + "$")
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "span_precio" }, [
+                  _vm._v(_vm._s(product.precio_oferta) + "$")
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  staticClass: "btn btn-dark btn-block btn-lg button_product",
+                  attrs: { href: product.link, type: "button" }
+                },
+                [_vm._v("COMPRAR "), _vm._m(0, true)]
+              )
+            ])
+          ])
+        ]
+      )
+    }),
+    0
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", [_c("i", { staticClass: "fab fa-amazon" })])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/runtime/componentNormalizer.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return normalizeComponent; });
+/* globals __VUE_SSR_CONTEXT__ */
+
+// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
+
+function normalizeComponent (
+  scriptExports,
+  render,
+  staticRenderFns,
+  functionalTemplate,
+  injectStyles,
+  scopeId,
+  moduleIdentifier, /* server only */
+  shadowMode /* vue-cli only */
+) {
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // render functions
+  if (render) {
+    options.render = render
+    options.staticRenderFns = staticRenderFns
+    options._compiled = true
+  }
+
+  // functional template
+  if (functionalTemplate) {
+    options.functional = true
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = 'data-v-' + scopeId
+  }
+
+  var hook
+  if (moduleIdentifier) { // server build
+    hook = function (context) {
+      // 2.3 injection
+      context =
+        context || // cached call
+        (this.$vnode && this.$vnode.ssrContext) || // stateful
+        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
+      // 2.2 with runInNewContext: true
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__
+      }
+      // inject component styles
+      if (injectStyles) {
+        injectStyles.call(this, context)
+      }
+      // register component module identifier for async chunk inferrence
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier)
+      }
+    }
+    // used by ssr in case component is cached and beforeCreate
+    // never gets called
+    options._ssrRegister = hook
+  } else if (injectStyles) {
+    hook = shadowMode
+      ? function () { injectStyles.call(this, this.$root.$options.shadowRoot) }
+      : injectStyles
+  }
+
+  if (hook) {
+    if (options.functional) {
+      // for template-only hot-reload because in that case the render fn doesn't
+      // go through the normalizer
+      options._injectStyles = hook
+      // register for functioal component in vue file
+      var originalRender = options.render
+      options.render = function renderWithStyleInjection (h, context) {
+        hook.call(context)
+        return originalRender(h, context)
+      }
+    } else {
+      // inject component registration as beforeCreate hook
+      var existing = options.beforeCreate
+      options.beforeCreate = existing
+        ? [].concat(existing, hook)
+        : [hook]
+    }
+  }
+
+  return {
+    exports: scriptExports,
+    options: options
+  }
+}
+
+
+/***/ }),
+
 /***/ "./node_modules/vue/dist/vue.common.dev.js":
 /*!*************************************************!*\
   !*** ./node_modules/vue/dist/vue.common.dev.js ***!
@@ -50236,6 +50491,7 @@ module.exports = function(module) {
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+Vue.component('products', __webpack_require__(/*! ./components/ProductsComponent.vue */ "./resources/js/components/ProductsComponent.vue").default);
 Vue.component('infinite', __webpack_require__(/*! vue-infinite-loading */ "./node_modules/vue-infinite-loading/dist/vue-infinite-loading.js"));
 window.Multiselect = __webpack_require__(/*! bootstrap-multiselect */ "./node_modules/bootstrap-multiselect/dist/js/bootstrap-multiselect.js");
 /*********SECCION DE LOS FILTROS******************/
@@ -50280,23 +50536,7 @@ $(document).ready(function () {
 /*********SECCION DE LOS FILTROS******************/
 
 var app = new Vue({
-  el: '#list_products',
-  created: function created() {
-    this.getProducts();
-  },
-  data: {
-    products: []
-  },
-  methods: {
-    getProducts: function getProducts() {
-      var _this = this;
-
-      var urlProducts = 'products?page=1';
-      axios.get(urlProducts).then(function (response) {
-        _this.products = response.data.products.data;
-      });
-    }
-  }
+  el: '#list_products'
 });
 
 /***/ }),
@@ -50356,6 +50596,75 @@ if (token) {
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/ProductsComponent.vue":
+/*!*******************************************************!*\
+  !*** ./resources/js/components/ProductsComponent.vue ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ProductsComponent_vue_vue_type_template_id_5ecce49e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ProductsComponent.vue?vue&type=template&id=5ecce49e& */ "./resources/js/components/ProductsComponent.vue?vue&type=template&id=5ecce49e&");
+/* harmony import */ var _ProductsComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProductsComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/ProductsComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ProductsComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ProductsComponent_vue_vue_type_template_id_5ecce49e___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ProductsComponent_vue_vue_type_template_id_5ecce49e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/ProductsComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/ProductsComponent.vue?vue&type=script&lang=js&":
+/*!********************************************************************************!*\
+  !*** ./resources/js/components/ProductsComponent.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProductsComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ProductsComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ProductsComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProductsComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/ProductsComponent.vue?vue&type=template&id=5ecce49e&":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/components/ProductsComponent.vue?vue&type=template&id=5ecce49e& ***!
+  \**************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProductsComponent_vue_vue_type_template_id_5ecce49e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./ProductsComponent.vue?vue&type=template&id=5ecce49e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ProductsComponent.vue?vue&type=template&id=5ecce49e&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProductsComponent_vue_vue_type_template_id_5ecce49e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProductsComponent_vue_vue_type_template_id_5ecce49e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 

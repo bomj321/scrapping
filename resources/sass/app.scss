@@ -1,7 +1,7 @@
 
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito:200,600');
-@import url('https://use.fontawesome.com/releases/v5.7.2/css/all.css');
+//@import url('https://fonts.googleapis.com/css?family=Nunito:200,600');
+
 // Variables
 @import 'variables';
 
@@ -9,7 +9,7 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~bootstrap-multiselect/dist/css/bootstrap-multiselect';
 
-
+@import url('https://use.fontawesome.com/releases/v5.7.2/css/all.css');
 
 
 
@@ -151,7 +151,7 @@ hr {
   height:50px;
   margin-top: -40px;
   position:absolute;
-  margin-left: 7rem;
+  margin-left: 12rem;
   border: 1px solid #d9534f;
   border-radius: 50px;
   padding: 13px 5px 15px 5px;
@@ -228,19 +228,25 @@ hr {
 
 @media only screen and (max-width: 960px) {
   .circulo_rebaja{
-    margin-left: 8rem;
+    margin-left: 10rem;
   }
 }
 
 @media only screen and (max-width: 728px) {
   .circulo_rebaja{
-    margin-left: 12rem;
+    margin-left: 15rem;
+  }
+}
+
+@media only screen and (max-width: 611px) {
+  .circulo_rebaja{
+    margin-left: 11rem;
   }
 }
 
 @media only screen and (max-width: 495px) {
   .circulo_rebaja{
-    margin-left: 7rem;
+    margin-left: 6rem;
   }
 }
 
