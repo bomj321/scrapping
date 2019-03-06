@@ -17,6 +17,5 @@
 										<a v-bind:href="product.link" type="button" class="btn btn-dark btn-block btn-lg button_product">COMPRAR <span><i class="fab fa-amazon"></i></span></a>
 								  </div>
 								</div>
-					</div>
-
+					</div>				
 	</div>

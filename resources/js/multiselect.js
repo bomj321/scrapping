@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Bootstrap Multiselect (http://davidstutz.de/bootstrap-multiselect/)
  *
  * Apache License, Version 2.0:
@@ -428,16 +428,16 @@
             filterBehavior: 'text',
             includeFilterClearBtn: true,
             preventInputChangeEvent: false,
-            nonSelectedText: 'Nada Seleccionado',
-            nSelectedText: 'Seleccionado',
-            allSelectedText: 'Todo Seleccionado',
+            nonSelectedText: 'None selected',
+            nSelectedText: 'selected',
+            allSelectedText: 'All selected',
             numberDisplayed: 3,
             disableIfEmpty: false,
             disabledText: '',
             delimiterText: ', ',
             includeResetOption: false,
             includeResetDivider: false,
-            resetText: 'Eliminar Filtros',
+            resetText: 'Reset',
             templates: {
                 button: '<button type="button" class="multiselect dropdown-toggle" data-toggle="dropdown"><span class="multiselect-selected-text"></span> <b class="caret"></b></button>',
                 ul: '<ul class="multiselect-container dropdown-menu"></ul>',
@@ -739,7 +739,7 @@
                     }
 
                     var index = $items.index($items.filter(':focus'));
-                    
+
                     // Navigation up.
                     if (event.keyCode === 38 && index > 0) {
                         index--;

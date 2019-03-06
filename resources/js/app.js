@@ -9,25 +9,76 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
+window.Multiselect = require('bootstrap-multiselect');
+/*********SECCION DE LOS FILTROS******************/
+  $(document).ready(function() {
+        $('#select1').multiselect({
+        	buttonClass: 'btn btn-secondary',
+        	includeResetOption: true,
+            includeResetDivider: true,
+            buttonWidth: '100%',
+            maxHeight: 350
 
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+        });
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+         $('#select2').multiselect({
+        	buttonClass: 'btn btn-secondary',
+        	includeResetOption: true,
+            includeResetDivider: true,
+            buttonWidth: '100%',
+            maxHeight: 350
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+        });
+
+
+         $('#select3').multiselect({
+        	buttonClass: 'btn btn-secondary',
+        	includeResetOption: true,
+            includeResetDivider: true,
+            buttonWidth: '100%',
+            maxHeight: 350
+
+        });
+
+          $('#select4').multiselect({
+        	buttonClass: 'btn btn-secondary',
+        	includeResetOption: true,
+            includeResetDivider: true,
+            buttonWidth: '100%',
+            maxHeight: 350
+
+        });
+
+           $('#select5').multiselect({
+        	buttonClass: 'btn btn-secondary',
+        	includeResetOption: true,
+            includeResetDivider: true,
+            buttonWidth: '100%',
+            maxHeight: 350
+
+        });
+    });
+/*********SECCION DE LOS FILTROS******************/
+
+
+
+
 
 const app = new Vue({
-    el: '#app'
+  el: '#list_products',
+  created: function() {
+    this.getProducts();
+  },
+  data: {
+    products: [],
+
+  },
+  methods: {
+    getProducts: function() {
+      var urlProducts = 'products?page=1';
+      axios.get(urlProducts).then(response => {
+        this.products = response.data.products.data
+      });
+    }
+  }
 });

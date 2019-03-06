@@ -14,7 +14,7 @@ class ProductsApiController extends Controller
      */
     public function index(Request $request)
     {
-          $products = Product::all();
+          $products = Product::orderBy('descuento', 'DESC')->paginate(36);
 
           return ['products' => $products];
     }
