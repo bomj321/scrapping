@@ -9,6 +9,9 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+Vue.component('infinite', 	require('vue-infinite-loading'));
+
+
 window.Multiselect = require('bootstrap-multiselect');
 /*********SECCION DE LOS FILTROS******************/
   $(document).ready(function() {
