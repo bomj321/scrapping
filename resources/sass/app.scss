@@ -1,14 +1,254 @@
 
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
-
+@import url('https://fonts.googleapis.com/css?family=Nunito:200,600');
+@import url('https://use.fontawesome.com/releases/v5.7.2/css/all.css');
 // Variables
 @import 'variables';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+@import '~bootstrap-multiselect/dist/css/bootstrap-multiselect';
 
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+
+
+
+
+/******************CSS PERSONALIZADO************************/
+/*ESTILOS GENERALES*/
+.container-fluid{
+  margin-bottom: 200px;
+
 }
+/*ESTILOS GENERALES*/
+
+
+/*HEADER*/
+.navbar{
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.navbar p{
+	color: white;
+	margin-bottom: 0rem;
+}
+
+.titulo_subheader{
+	margin-top: 20px;
+}
+
+.boton_ordenar{
+	min-width: 200px;
+}
+
+hr {
+  border: 0;
+  clear:both;
+  display:block;
+  width: 96%;
+  background-color: black;
+  height: 1px;
+}
+/*HEADER*/
+
+/***FILTROS***/
+.multiselect-wrapper .multiselect-input{
+	width: 100px;
+}
+
+.multiselect-container .btn{
+	text-align: left;
+}
+
+.multiselect-container>li>a>label>input[type=checkbox] {
+    margin-left: -20px;
+}
+
+.dropdown-menu{
+	width: 100%;
+  font-size: 13px;
+}
+
+.fila_hr{
+  margin-top: 35px;
+}
+
+.multiselect-container>li>a{
+  color: black;
+  font-size: 15px;
+}
+
+.multiselect-container{
+  width: 100%;
+  z-index: 8000;
+}
+
+.multiselect-container>li>a>label>input[type=checkbox]{
+  width: 20px;
+  height: 20px;
+}
+
+
+/***FILTROS***/
+
+
+
+/***BODY***/
+.card{
+  margin-top: 80px;
+  margin-left: 40px;
+  margin-right: 40px;
+  border: none
+}
+
+.product_seccion{
+  text-align: center;
+  max-width: 100%;
+  overflow:hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.card-header{
+  max-height: 80px;
+   overflow:hidden;
+  display:inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background-color: white;
+  border-bottom: none;
+}
+
+.card-footer{
+  background-color: white;
+  border-top: none;
+}
+
+.card img{
+  width: 100%;
+  min-height: 280px;
+  max-height: 280px;
+}
+
+.span_precio{
+  color: red;
+  font-size: 25px;
+  margin-left: 10px;
+  font-weight: 800;
+}
+
+.card button{
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.precio_linea{
+  text-decoration-line: line-through;
+}
+
+.circulo_rebaja{
+  width: 50px;
+  height:50px;
+  margin-top: -40px;
+  position:absolute;
+  margin-left: 7rem;
+  border: 1px solid #d9534f;
+  border-radius: 50px;
+  padding: 13px 5px 15px 5px;
+  z-index: 1000;
+  font-size: 15px;
+  font-weight: bold;
+  background-color: #d9534f;
+  color: white;
+}
+
+.button_product_talla{
+  background-color: white;
+  border: 1px solid gray;
+  color: gray;
+}
+
+.button_product{
+  font-weight: 900;
+}
+
+/***BODY***/
+
+
+
+
+
+
+
+
+
+/*FOOTER*/
+.fixed-bottom{
+  margin-top: 200px;
+  z-index: 9999;
+}
+.contenido_footer{
+	width: 100%;
+	text-align: center;
+}
+
+.contenido_footer a{
+	color: white;
+	cursor: pointer;
+}
+/*FOOTER*/
+
+
+
+/****MEDIA QUERYS****/
+
+@media only screen and (max-width: 765px) {
+  .boton_filtros{
+  	margin-top: 30px;
+  	margin-left: 30px;
+  }
+
+  .fila_filtros{
+  	margin-left: 20px;
+  	margin-bottom: 100px;
+  }
+}
+
+@media only screen and (max-width: 1652px) {
+  .circulo_rebaja{
+    margin-left: 8rem;
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  .circulo_rebaja{
+    margin-left: 6rem;
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  .circulo_rebaja{
+    margin-left: 8rem;
+  }
+}
+
+@media only screen and (max-width: 728px) {
+  .circulo_rebaja{
+    margin-left: 12rem;
+  }
+}
+
+@media only screen and (max-width: 495px) {
+  .circulo_rebaja{
+    margin-left: 7rem;
+  }
+}
+
+
+/****MEDIA QUERYS****/
+
+
+
+
+
+/******************CSS PERSONALIZADO************************/
