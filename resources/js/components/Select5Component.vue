@@ -1,33 +1,119 @@
 <!-- Vue component -->
 <template>
-  <div>
-       <label class="typo__label">Tipo de Prenda</label>
-      <multiselect v-model="value" :options="options" :multiple="true" :close-on-select="false" :clear-on-select="false" :preserve-search="true" placeholder="Escoja Alguno" label="name" track-by="name" :preselect-first="true">
-
-            <template slot="selection" slot-scope="{ values, search, isOpen }">
-              
-              <span class="multiselect__single" v-if="values.length &amp;&amp; !isOpen">{{ values.length }} seleccionadas</span>
-
-            </template>
-      </multiselect>
-  </div>
+ <div>
+  <label class="typo__label">Talla</label>
+  <multiselect v-model="value" :options="options" :multiple="true" group-values="tallas" group-label="tiposTallas" :group-select="false" placeholder="Escoja Un Filtro" track-by="name" label="name"><span slot="noResult">No hay elementos lo siento</span></multiselect>
+</div>
 </template>
 
 <script>
-  import Multiselect from 'vue-multiselect'
 
 export default {
-  components: {
-    Multiselect
-  },
-  data () {
+
+ data () {
     return {
       value: [],
       options: [
-        { name: 'Hombre'},
-        { name: 'Mujer'},       
+               {
+          tiposTallas: 'Camisas, blusas, tops...',
+          tallas: [
+
+              { name: 'XXS'},              
+              { name: 'XS'},
+              { name: 'S'},
+              { name: 'M'},
+              { name: 'L'},
+              { name: 'XL'},
+              { name: 'XXL'}           
+          ]
+        },
+        {
+          tiposTallas: 'Deportivas y zapatos',
+          tallas: [
+                { name : '<34'},
+                { name : '34'},
+                { name : '35'},
+                { name : '36'},
+                { name : '37'},
+                { name : '38'},
+                { name : '39'},
+                { name : '40'},
+                { name : '41'},
+                { name : '42'},
+                { name : '43'},
+                { name : '44'},
+                { name : '45'},
+                { name : '46'},
+                { name : '47'},
+                { name : '48'},
+                { name : '48>'}
+          ]
+        },
+        {
+          tiposTallas: 'Pantalones, faldas, shorts...',
+          tallas: [
+                  { name : '23W'},
+                  { name : '24W'},
+                  { name : '25W'},
+                  { name : '26W'},
+                  { name : '27W'},
+                  { name : '28W'},
+                  { name : '29W'},
+                  { name : '30W'},
+                  { name : '31W'},
+                  { name : '32W'},
+                  { name : '33W'},
+                  { name : '34W'},
+                  { name : '35W'},
+                  { name : '36W'},
+                  { name : '37W'},
+                  { name : '38W'},
+                  { name : '39W'},
+
+                  { name : '40W'},
+                  { name : '41W'},
+                  { name : '42W'},
+                  { name : '43W'},
+                  { name : '44W'},
+                  { name : '45W'},
+                  { name : '46W'},
+                  { name : '47W'},
+                  { name : '48W'}
+          ]
+        },
+
+        {
+          tiposTallas: 'Vestidos',
+          tallas: [
+                  { name : '32'},
+                  { name : '34'},
+                  { name : '36'},
+                  { name : '38'},
+                  { name : '40'},
+                  { name : '42'},
+                  { name : '44'}
+          ]
+        },
+
+        {
+          tiposTallas: 'Bañadores',
+          tallas: [
+                    {name : 'XXS'},
+                    {name : 'XS'},
+                    {name : 'S'},
+                    {name : 'M'},
+                    {name : 'L'},
+                    {name : 'XL'},
+                    {name : 'XXL'}
+          ]
+        }
       ]
     }
+  },
+  methods: {
+      dispatchAction() {
+                 console.log('HOLA');
+              }
   }
 }
 </script>

@@ -19,6 +19,7 @@ Vue.component('selectvue1', require('./components/Select1Component.vue').default
 Vue.component('selectvue2', require('./components/Select2Component.vue').default);
 Vue.component('selectvue3', require('./components/Select3Component.vue').default);
 Vue.component('selectvue4', require('./components/Select4Component.vue').default);
+Vue.component('selectvue5', require('./components/Select5Component.vue').default);
 
 
 

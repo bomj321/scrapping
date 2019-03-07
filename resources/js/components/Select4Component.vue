@@ -2,7 +2,7 @@
 <template>
   <div>
        <label class="typo__label">Marca</label>
-      <multiselect v-model="value" :options="options" :multiple="true" :close-on-select="false" :clear-on-select="false" :preserve-search="true" placeholder="Escoja Alguno" label="name" track-by="name" :preselect-first="false">
+      <multiselect v-model="value" :options="options" :multiple="true" :close-on-select="false" :clear-on-select="false" :preserve-search="true" placeholder="Escoja Un Filtro" label="name" track-by="name" :preselect-first="false">
 
             <template slot="selection" slot-scope="{ values, search, isOpen }">
               
@@ -14,12 +14,9 @@
 </template>
 
 <script>
-  import Multiselect from 'vue-multiselect'
 
 export default {
-  components: {
-    Multiselect
-  },
+ 
   data () {
     return {
       value: [],

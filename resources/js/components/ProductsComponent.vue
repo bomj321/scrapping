@@ -60,10 +60,7 @@
                       }
                   })
               },
-
-               onChange(event) {
-                    console.log(event.target.value);
-                }            
+                   
              
             }
 

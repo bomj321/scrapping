@@ -2,7 +2,7 @@
 <template>
   <div>
        <label class="typo__label">Tipo de Prenda</label>
-      <multiselect v-model="value" :options="options" :multiple="true" :close-on-select="false" :clear-on-select="false" :preserve-search="true" placeholder="Escoja Alguno" label="name" track-by="name" :preselect-first="false">
+      <multiselect v-model="value" :options="options" :multiple="true" :close-on-select="false" :clear-on-select="false" :preserve-search="true" placeholder="Escoja Un Filtro" label="name" track-by="name" :preselect-first="false">
 
             <template slot="selection" slot-scope="{ values, search, isOpen }">
               
