@@ -7,7 +7,10 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
-@import '~bootstrap-multiselect/dist/css/bootstrap-multiselect';
+
+//Vue Multiselect
+@import '~vue-multiselect/dist/vue-multiselect.min';
+
 
 @import url('https://use.fontawesome.com/releases/v5.7.2/css/all.css');
 
@@ -15,10 +18,17 @@
 
 /******************CSS PERSONALIZADO************************/
 /*ESTILOS GENERALES*/
+.multiselect__content-wrapper{
+  width: 130% !important;
+}
 .container-fluid{
   margin-bottom: 200px;
-
 }
+
+body{
+  max-width: 3000px;
+}
+
 /*ESTILOS GENERALES*/
 
 
@@ -52,40 +62,10 @@ hr {
 /*HEADER*/
 
 /***FILTROS***/
-.multiselect-wrapper .multiselect-input{
-	width: 100px;
-}
 
-.multiselect-container .btn{
-	text-align: left;
-}
 
-.multiselect-container>li>a>label>input[type=checkbox] {
-    margin-left: -20px;
-}
-
-.dropdown-menu{
-	width: 100%;
-  font-size: 13px;
-}
-
-.fila_hr{
-  margin-top: 35px;
-}
-
-.multiselect-container>li>a{
-  color: black;
-  font-size: 15px;
-}
-
-.multiselect-container{
-  width: 100%;
+.multiselect__content{
   z-index: 8000;
-}
-
-.multiselect-container>li>a>label>input[type=checkbox]{
-  width: 20px;
-  height: 20px;
 }
 
 
@@ -155,7 +135,7 @@ hr {
   border: 1px solid #d9534f;
   border-radius: 50px;
   padding: 13px 5px 15px 5px;
-  z-index: 1000;
+  z-index: 40;
   font-size: 15px;
   font-weight: bold;
   background-color: #d9534f;

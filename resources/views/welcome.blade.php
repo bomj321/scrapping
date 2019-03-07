@@ -10,10 +10,7 @@
     </head>
 
     <body>
-            <div class="container-fluid">
-
-                  @include('includes.header')
-
+            <div class="container-fluid">  
 
                   @include('includes.body')
 

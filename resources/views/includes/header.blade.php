@@ -1,6 +1,6 @@
 <!-- As a heading -->
 <nav class="navbar navbar-dark bg-dark">
-	<p><span><i class="fas fa-tags"></i></span> Las mejores ofertas en moda</p>
+	<p><span><i class="fas fa-tags"></i></span> Las mejores ofertas en moda a trav&eacute;s de Amazon</p>
 	<p><span><i class="fas fa-user-shield"></i></span> Compra segura a través de Amazon.</p>
 	<p><span><i class="fas fa-truck"></i></span> Envíos y devoluciones gratuitas si eres cliente prime</p>
 
@@ -8,186 +8,40 @@
 
 <div class="row">
 	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 titulo_subheader">
-		<center><h1>LENDER</h1></center>
+		<center><h1>CHOLLOSROPA</h1></center>
 	</div>
 	<hr>
 </div>
 
-<div class="row">
-	<div class="col-lg-2 col-md-4 col-sm-12 col-xs-12">
-		<div class="dropdown ml-4">
-			  <button class="btn btn-secondary boton_ordenar" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			   Ordenar por:
-			  </button>
-			  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-			    <a class="dropdown-item" href="#">Novedades</a>
-			    <a class="dropdown-item" href="#">Mayores descuento</a>
-			    <a class="dropdown-item" href="#">Precio de menor a mayor</a>
-			    <a class="dropdown-item" href="#">Precio de mayor a menor</a>
-			  </div>
-		</div>
-	</div>
-
-	<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 boton_filtros">
-			  <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+<div class="row fila_filtros pl-4 pr-4">
+	<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 boton_filtros mt-5">
+			  <button class="btn btn-success btn-block btn-lg">
 			   Filtrar por:
 			  </button>
 	</div>
-</div>
 
-<div class="row fila_filtros">
-	<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 mt-3 offset-md-2">
-		<label for="">HOMBRE / MUJER</label>
-			<select id="select1" multiple="multiple">
-				    <option value="1">Hombre</option>
-				    <option value="2">Mujer</option>
 
-			</select>
+	<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 mt-3">
+		<selectvue1></selectvue1>
+	</div>
+
+	<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 mt-3">
+		<selectvue2></selectvue2>
 
 	</div>
 
 	<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 mt-3">
-		<label for="">Tipo de Prenda</label>
-			<select id="select2" multiple="multiple">
-				    <option value="1">Hombre</option>
-				    <option value="2">Mujer</option>
-
-			</select>
+		<selectvue3></selectvue3>
 
 	</div>
 
 	<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 mt-3">
-		<label for="">Precio</label>
-			<select id='select3' multiple>
-			  <option value='1'>Menos de 25€</option>
-			  <option value='2'>De 25€ hasta 50€</option>
-			  <option value='1'>De 50€ hasta 100€</option>
-			  <option value='2'>Más de 100€</option>
-		</select>
-
-	</div>
-
-	<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 mt-3">
-		<label for="">Marca</label>
-			<select id='select4' multiple>
-			  <option value='ADIDAS'>Adidas</option>
-			  <option value='Armani'>Armani</option>
-			  <option value='Asics'>Asics</option>
-			  <option value='Bdba'>Bdba</option>
-			  <option value='Betty Barclay Elements'>Betty Barclay Elements</option>
-			  <option value='Bikkembergs'>Bikkembergs</option>
-			  <option value='Billabong'>Billabong</option>
-			  <option value='Blend'>Blend</option>
-			  <option value='Brooks Brothers'>Brooks Brothers</option>
-			  <option value='Burberry'>Burberry</option>
-			  <option value='Burton'>Burton</option>
-			  <option value='Calvin Klein'>Calvin Klein</option>
-			  <option value='Camper'>Camper</option>
-			  <option value='Carhartt'>Carhartt</option>
-			  <option value='Carrera'>Carrera</option>
-
-			  <option value='Clarks'>Clarks</option>
-			  <option value='Converse'>Converse</option>
-			  <option value='Columbia'>Columbia</option>
-			  <option value='Cortefiel'>Cortefiel</option>
-			  <option value='Dc'>Dc</option>
-			  <option value='Desigual'>Desigual</option>
-			  <option value='Diesel'>Diesel</option>
-			  <option value='Dkny'>Dkny</option>
-			  <option value='Dockers'>Dockers</option>
-			  <option value='Dolores Promesas'>Dolores Promesas</option>
-			  <option value='Double Agent'>Double Agent</option>
-			  <option value='Dr. Martens'>Dr. Martens</option>
-			  <option value='El Ganso'>El Ganso</option>
-			  <option value='Element'>Element</option>
-
-
-			  <option value='Etxart & Panno'>Etxart & Panno</option>
-			  <option value='Farrutx'>Farrutx</option>
-			  <option value='Find'>Find</option>
-			  <option value='Fred Perry'>Fred Perry</option>
-			  <option value='Furla'>Furla</option>
-			  <option value='G-Star Raw'>G-Star Raw</option>
-			  <option value='Gant'>Gant</option>
-			  <option value='Geographical Norway'>Geographical Norway</option>
-			  <option value='Gucci'>Gucci</option>
-			  <option value='Guess'>Guess</option>
-			  <option value='Hackett London'>Hackett London</option>
-			  <option value='Helly Hansen'>Helly Hansen</option>
-			  <option value='Hugo Boss'>Hugo Boss</option>
-			  <option value='Hummel'>Hummel</option>
-
-			  <option value='Hurley'>Hurley</option>
-			  <option value='Ichi'>Ichi</option>
-			  <option value='Jack & Jones'>Jack & Jones</option>
-			  <option value='Jimmy Choo'>Jimmy Choo</option>
-			  <option value='Joma'>Joma</option>
-			  <option value='Kangaroos'>Kangaroos</option>
-			  <option value='Kappa'>Kappa</option>
-			  <option value='Karen Millen'>Karen Millen</option>
-			  <option value='Lacoste'>Lacoste</option>
-			  <option value='Le Coq Sportif'>Le Coq Sportif</option>
-			  <option value='Lee'>Lee</option>
-
-
-
-			  <option value='Levis'>Levis</option>
-			  <option value='Liu Jo'>Liu Jo</option>
-			  <option value='Michael Kors'>Michael Kors</option>
-			  <option value='Moschino'>Moschino</option>
-			  <option value='Munich'>Munich</option>
-			  <option value='Naf Naf'>Naf Naf</option>
-			  <option value='New Balance'>New Balance</option>
-			  <option value='Nike'>Nike</option>
-			  <option value='Oakley'>Oakley</option>
-			  <option value='O Neill'>O' Neill</option>
-			  <option value='Panama Jack'>Panama Jack</option>
-			  <option value='Pedro del Hierror'>Pedro del Hierror</option>
-			  <option value='Pepe Jeans'>Pepe Jeans</option>
-
-
-			  <option value='Prada'>Prada</option>
-			  <option value='Puma'>Puma</option>
-			  <option value='Quiksilver'>Quiksilver</option>
-			  <option value='Rains'>Rains</option>
-			  <option value='Ralph Lauren'>Ralph Lauren</option>
-			  <option value='Ray-ban'>Ray-ban</option>
-			  <option value='Reebok'>Reebok</option>
-			  <option value='Roxy'>Roxy</option>
-			  <option value='Salsa'>Salsa</option>
-			  <option value='Scalpers'>Scalpers</option>
-
-
-
-
-
-			  <option value='Skechers'>Skechers</option>
-			  <option value='Springfield'>Springfield</option>
-			  <option value='Superdry'>Superdry</option>
-			  <option value='Superga'>Superga</option>
-			  <option value='Ted Baker'>Ted Baker</option>
-			  <option value='The North Face'>The North Face</option>
-			  <option value='Timberland'>Timberland</option>
-			  <option value='Tommy Hilfiger'>Tommy Hilfiger</option>
-			  <option value='Tous'>Tous</option>
-			  <option value='Trucco'>Trucco</option>
-			  <option value='Under Armour'>Under Armour</option>
-			  <option value='Vans'>Vans</option>
-
-
-			  <option value='Versace'>Versace</option>
-			  <option value='Vogue'>Vogue</option>
-			  <option value='Volcom'>Volcom</option>
-			  <option value='Wesc'>Wesc</option>
-			  <option value='Women Secret'>Women Secret</option>
-
-		</select>
-
+		<selectvue4></selectvue4>
 	</div>
 
 	<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 mt-3 select_talla">
 		<label for="">Talla</label>
-			<select id='select5' multiple>
+			<select id='select5' multiple name='filtros_ropa[]'>
 
 			 <optgroup class="group-1" label="Camisas, blusas, tops...">
 			  <option value='XXS'>XXS</option>
@@ -270,6 +124,7 @@
 
 	</div>
 </div>
+
 
 <div class="clearfix"></div>
 <div class="row fila_hr">

@@ -1,4 +1,8 @@
+	<div id="list_products">		
+			@include('includes.header')
 
-	<div id="list_products">
-					<products></products>
+<!--TAG VUE.JS-->
+			<products></products>
+<!--TAG VUE.JS-->
+
 	</div>

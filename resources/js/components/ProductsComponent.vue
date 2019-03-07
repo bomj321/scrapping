@@ -7,7 +7,9 @@
                     {{ product.modelo }}
                   </div>
                     <div class="card-body">
+                      <a v-bind:href="product.link" target="_blank">
                         <img  v-bind:src="product.imagen">
+                      </a>
                     </div>
                   <div class="card-footer text-muted">
                     <a v-bind:href="product.link" type="button" class="btn button_product_talla"> {{ product.talla }}</a>
@@ -16,22 +18,28 @@
                   </div>
                 </div>
       </div>
+
       <br>
-      <infinite-loading @distance="1" @infinite="infiniteHandler">
-          <div slot="no-more">--</div>
-          <div slot="spinner">Cargando...</div>
-          <div slot="no-results">Sin resultados</div>
-      </infinite-loading>
+
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <infinite-loading @distance="1" @infinite="infiniteHandler">
+                <div slot="no-more">No hay mas Resultados</div>
+                <div slot="no-results">Sin resultados</div>
+            </infinite-loading>
+      </div>
 
   </div>
 </template>
 
 <script>
-    export default {
+
+    export default {      
+
           data() {
                 return {
                     products: [],
-                    page: 0
+                    page: 0,
+                    
                 }
             },
             methods: {
@@ -51,15 +59,15 @@
                           $state.complete();
                       }
                   })
-              }
+              },
 
+               onChange(event) {
+                    console.log(event.target.value);
+                }            
+             
             }
 
-
-
-
-
-
+           
 
     }
 </script>
