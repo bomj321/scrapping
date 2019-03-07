@@ -12,7 +12,7 @@ class ProductsApiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
           $products = Product::orderBy('descuento', 'DESC')->paginate(36);
 

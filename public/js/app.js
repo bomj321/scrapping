@@ -1859,6 +1859,21 @@ __webpack_require__.r(__webpack_exports__);
         name: 'Mujer'
       }]
     };
+  },
+  methods: {
+    ValueSelected: function ValueSelected(option) {
+      var valueSelects = [];
+      /*RETRASO LA FUNCION 500 MILISEGUNDOS PARA QUE APAREZCA EL ELEMENTO SPAN CON LA CLASE MULTISELECT*/
+
+      setTimeout(function () {
+        $('.multiselect__element span.multiselect__option--selected').map(function () {
+          valueSelects.push($(this).text());
+        }).get();
+      }, 300);
+      /*RETRASO LA FUNCION 500 MILISEGUNDOS PARA QUE APAREZCA EL ELEMENTO SPAN CON LA CLASE MULTISELECT*/
+
+      console.log(valueSelects);
+    }
   }
 });
 
@@ -1924,6 +1939,21 @@ __webpack_require__.r(__webpack_exports__);
         name: 'Sudaderas / Jerséis'
       }]
     };
+  },
+  methods: {
+    ValueSelected: function ValueSelected(option) {
+      var valueSelects = [];
+      /*RETRASO LA FUNCION 500 MILISEGUNDOS PARA QUE APAREZCA EL ELEMENTO SPAN CON LA CLASE MULTISELECT*/
+
+      setTimeout(function () {
+        $('.multiselect__element span.multiselect__option--selected').map(function () {
+          valueSelects.push($(this).text());
+        }).get();
+      }, 300);
+      /*RETRASO LA FUNCION 500 MILISEGUNDOS PARA QUE APAREZCA EL ELEMENTO SPAN CON LA CLASE MULTISELECT*/
+
+      console.log(valueSelects);
+    }
   }
 });
 
@@ -1967,6 +1997,21 @@ __webpack_require__.r(__webpack_exports__);
         name: 'Más de 100€'
       }]
     };
+  },
+  methods: {
+    ValueSelected: function ValueSelected(option) {
+      var valueSelects = [];
+      /*RETRASO LA FUNCION 500 MILISEGUNDOS PARA QUE APAREZCA EL ELEMENTO SPAN CON LA CLASE MULTISELECT*/
+
+      setTimeout(function () {
+        $('.multiselect__element span.multiselect__option--selected').map(function () {
+          valueSelects.push($(this).text());
+        }).get();
+      }, 300);
+      /*RETRASO LA FUNCION 500 MILISEGUNDOS PARA QUE APAREZCA EL ELEMENTO SPAN CON LA CLASE MULTISELECT*/
+
+      console.log(valueSelects);
+    }
   }
 });
 
@@ -2188,6 +2233,21 @@ __webpack_require__.r(__webpack_exports__);
         name: 'Women Secret'
       }]
     };
+  },
+  methods: {
+    ValueSelected: function ValueSelected(option) {
+      var valueSelects = [];
+      /*RETRASO LA FUNCION 500 MILISEGUNDOS PARA QUE APAREZCA EL ELEMENTO SPAN CON LA CLASE MULTISELECT*/
+
+      setTimeout(function () {
+        $('.multiselect__element span.multiselect__option--selected').map(function () {
+          valueSelects.push($(this).text());
+        }).get();
+      }, 300);
+      /*RETRASO LA FUNCION 500 MILISEGUNDOS PARA QUE APAREZCA EL ELEMENTO SPAN CON LA CLASE MULTISELECT*/
+
+      console.log(valueSelects);
+    }
   }
 });
 
@@ -2202,6 +2262,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -2361,8 +2423,18 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    dispatchAction: function dispatchAction() {
-      console.log('HOLA');
+    ValueSelected: function ValueSelected(option) {
+      var valueSelects = [];
+      /*RETRASO LA FUNCION 500 MILISEGUNDOS PARA QUE APAREZCA EL ELEMENTO SPAN CON LA CLASE MULTISELECT*/
+
+      setTimeout(function () {
+        $('.multiselect__element span.multiselect__option--selected').map(function () {
+          valueSelects.push($(this).text());
+        }).get();
+      }, 300);
+      /*RETRASO LA FUNCION 500 MILISEGUNDOS PARA QUE APAREZCA EL ELEMENTO SPAN CON LA CLASE MULTISELECT*/
+
+      console.log(valueSelects);
     }
   }
 });
@@ -37573,6 +37645,7 @@ var render = function() {
           "track-by": "name",
           "preselect-first": false
         },
+        on: { select: _vm.ValueSelected, remove: _vm.ValueSelected },
         scopedSlots: _vm._u([
           {
             key: "selection",
@@ -37641,6 +37714,7 @@ var render = function() {
           "track-by": "name",
           "preselect-first": false
         },
+        on: { select: _vm.ValueSelected, remove: _vm.ValueSelected },
         scopedSlots: _vm._u([
           {
             key: "selection",
@@ -37709,6 +37783,7 @@ var render = function() {
           "track-by": "name",
           "preselect-first": false
         },
+        on: { select: _vm.ValueSelected, remove: _vm.ValueSelected },
         scopedSlots: _vm._u([
           {
             key: "selection",
@@ -37777,6 +37852,7 @@ var render = function() {
           "track-by": "name",
           "preselect-first": false
         },
+        on: { select: _vm.ValueSelected, remove: _vm.ValueSelected },
         scopedSlots: _vm._u([
           {
             key: "selection",
@@ -37846,6 +37922,7 @@ var render = function() {
             "track-by": "name",
             label: "name"
           },
+          on: { select: _vm.ValueSelected, remove: _vm.ValueSelected },
           model: {
             value: _vm.value,
             callback: function($$v) {
@@ -50289,15 +50366,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!******************************************************!*\
   !*** ./resources/js/components/Select3Component.vue ***!
   \******************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Select3Component_vue_vue_type_template_id_8a2be11e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Select3Component.vue?vue&type=template&id=8a2be11e& */ "./resources/js/components/Select3Component.vue?vue&type=template&id=8a2be11e&");
 /* harmony import */ var _Select3Component_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Select3Component.vue?vue&type=script&lang=js& */ "./resources/js/components/Select3Component.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Select3Component_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Select3Component_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -50327,7 +50403,7 @@ component.options.__file = "resources/js/components/Select3Component.vue"
 /*!*******************************************************************************!*\
   !*** ./resources/js/components/Select3Component.vue?vue&type=script&lang=js& ***!
   \*******************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

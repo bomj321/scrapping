@@ -2,7 +2,9 @@
 <template>
  <div>
   <label class="typo__label">Talla</label>
-  <multiselect v-model="value" :options="options" :multiple="true" group-values="tallas" group-label="tiposTallas" :group-select="false" placeholder="Escoja Un Filtro" track-by="name" label="name"><span slot="noResult">No hay elementos lo siento</span></multiselect>
+  <multiselect v-model="value" :options="options" :multiple="true" group-values="tallas" group-label="tiposTallas" :group-select="false" placeholder="Escoja Un Filtro" track-by="name" label="name" @select='ValueSelected' @remove='ValueSelected'>
+      <span slot="noResult">No hay elementos lo siento</span>
+  </multiselect>
 </div>
 </template>
 
@@ -111,9 +113,28 @@ export default {
     }
   },
   methods: {
-      dispatchAction() {
-                 console.log('HOLA');
-              }
+      ValueSelected(option) {
+
+         var valueSelects = [];
+/*RETRASO LA FUNCION 500 MILISEGUNDOS PARA QUE APAREZCA EL ELEMENTO SPAN CON LA CLASE MULTISELECT*/        
+
+          setTimeout(function(){
+
+                   $('.multiselect__element span.multiselect__option--selected').map(function()
+                 {
+                         valueSelects.push($(this).text());
+                 }).get();
+
+           }, 300);
+
+
+/*RETRASO LA FUNCION 500 MILISEGUNDOS PARA QUE APAREZCA EL ELEMENTO SPAN CON LA CLASE MULTISELECT*/          
+        
+
+         console.log(valueSelects);
+
+
+      }
   }
 }
 </script>
