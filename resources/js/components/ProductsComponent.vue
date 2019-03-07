@@ -16,26 +16,50 @@
                   </div>
                 </div>
       </div>
+      <br>
+      <infinite-loading @distance="1" @infinite="infiniteHandler">
+          <div slot="no-more">--</div>
+          <div slot="spinner">Cargando...</div>
+          <div slot="no-results">Sin resultados</div>
+      </infinite-loading>
+
   </div>
 </template>
 
 <script>
     export default {
-          created: function() {
-            this.getProducts();
-          },
           data() {
-              return {
-                  products: []
+                return {
+                    products: [],
+                    page: 0
+                }
+            },
+            methods: {
+              infiniteHandler($state) {
+                  this.page++
+                  let url = 'products?page='+this.page
+
+                  axios.get(url)
+                  .then(response => {
+
+                      let list_products = response.data.products.data;
+
+                      if(list_products.length){
+                          this.products = this.products.concat(list_products);
+                          $state.loaded();
+                      }else{
+                          $state.complete();
+                      }
+                  })
               }
-          },
-          methods: {
-            getProducts: function() {
-              var urlProducts = 'products?page=1';
-              axios.get(urlProducts).then(response => {
-                this.products = response.data.products.data
-              });
+
             }
-          }
+
+
+
+
+
+
+
     }
 </script>

@@ -1784,22 +1784,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  created: function created() {
-    this.getProducts();
-  },
   data: function data() {
     return {
-      products: []
+      products: [],
+      page: 0
     };
   },
   methods: {
-    getProducts: function getProducts() {
+    infiniteHandler: function infiniteHandler($state) {
       var _this = this;
 
-      var urlProducts = 'products?page=1';
-      axios.get(urlProducts).then(function (response) {
-        _this.products = response.data.products.data;
+      this.page++;
+      var url = 'products?page=' + this.page;
+      axios.get(url).then(function (response) {
+        var list_products = response.data.products.data;
+
+        if (list_products.length) {
+          _this.products = _this.products.concat(list_products);
+          $state.loaded();
+        } else {
+          $state.complete();
+        }
       });
     }
   }
@@ -38295,67 +38308,96 @@ var render = function() {
   return _c(
     "div",
     { staticClass: "row" },
-    _vm._l(_vm.products, function(product) {
-      return _c(
-        "div",
-        { staticClass: "col-lg-3 col-md-6 col-sm-12 col-xs-12" },
-        [
-          _c("div", { staticClass: "card text-center" }, [
-            _c("div", { staticClass: "card-header" }, [
-              _c("h4", [
-                _c("div", { staticClass: "product_seccion" }, [
-                  _vm._v(_vm._s(product.seccion))
+    [
+      _vm._l(_vm.products, function(product) {
+        return _c(
+          "div",
+          { staticClass: "col-lg-3 col-md-6 col-sm-12 col-xs-12" },
+          [
+            _c("div", { staticClass: "card text-center" }, [
+              _c("div", { staticClass: "card-header" }, [
+                _c("h4", [
+                  _c("div", { staticClass: "product_seccion" }, [
+                    _vm._v(_vm._s(product.seccion))
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "circulo_rebaja" }, [
+                    _vm._v(_vm._s(product.descuento) + "%")
+                  ])
                 ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "circulo_rebaja" }, [
-                  _vm._v(_vm._s(product.descuento) + "%")
-                ])
-              ]),
-              _vm._v(
-                "\n                  " +
-                  _vm._s(product.modelo) +
-                  "\n                "
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _c("img", { attrs: { src: product.imagen } })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-footer text-muted" }, [
-              _c(
-                "a",
-                {
-                  staticClass: "btn button_product_talla",
-                  attrs: { href: product.link, type: "button" }
-                },
-                [_vm._v(" " + _vm._s(product.talla))]
-              ),
-              _vm._v(" "),
-              _c("p", [
-                _c("span", { staticClass: "precio_linea" }, [
-                  _vm._v(" " + _vm._s(product.precio_anterior) + "$")
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "span_precio" }, [
-                  _vm._v(_vm._s(product.precio_oferta) + "$")
-                ])
+                _vm._v(
+                  "\n                  " +
+                    _vm._s(product.modelo) +
+                    "\n                "
+                )
               ]),
               _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "btn btn-dark btn-block btn-lg button_product",
-                  attrs: { href: product.link, type: "button" }
-                },
-                [_vm._v("COMPRAR "), _vm._m(0, true)]
-              )
+              _c("div", { staticClass: "card-body" }, [
+                _c("img", { attrs: { src: product.imagen } })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-footer text-muted" }, [
+                _c(
+                  "a",
+                  {
+                    staticClass: "btn button_product_talla",
+                    attrs: { href: product.link, type: "button" }
+                  },
+                  [_vm._v(" " + _vm._s(product.talla))]
+                ),
+                _vm._v(" "),
+                _c("p", [
+                  _c("span", { staticClass: "precio_linea" }, [
+                    _vm._v(" " + _vm._s(product.precio_anterior) + "$")
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "span_precio" }, [
+                    _vm._v(_vm._s(product.precio_oferta) + "$")
+                  ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "btn btn-dark btn-block btn-lg button_product",
+                    attrs: { href: product.link, type: "button" }
+                  },
+                  [_vm._v("COMPRAR "), _vm._m(0, true)]
+                )
+              ])
             ])
+          ]
+        )
+      }),
+      _vm._v(" "),
+      _c("br"),
+      _vm._v(" "),
+      _c(
+        "infinite-loading",
+        {
+          on: {
+            distance: function($event) {
+              1
+            },
+            infinite: _vm.infiniteHandler
+          }
+        },
+        [
+          _c("div", { attrs: { slot: "no-more" }, slot: "no-more" }, [
+            _vm._v("--")
+          ]),
+          _vm._v(" "),
+          _c("div", { attrs: { slot: "spinner" }, slot: "spinner" }, [
+            _vm._v("Cargando...")
+          ]),
+          _vm._v(" "),
+          _c("div", { attrs: { slot: "no-results" }, slot: "no-results" }, [
+            _vm._v("Sin resultados")
           ])
         ]
       )
-    }),
-    0
+    ],
+    2
   )
 }
 var staticRenderFns = [
