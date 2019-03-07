@@ -43,9 +43,19 @@
                 }
             },
             methods: {
-              infiniteHandler($state) {
+              infiniteHandler($state) {                   
                   this.page++
-                  let url = 'products?page='+this.page
+
+                  var busqueda = [1,2,3];
+
+                  var array_string = busqueda.join('&busqueda[]=');
+
+                  for (var i = 0; i < busqueda.length; i+=1) {
+                       console.log(array_string);
+                      console.log("products?page="+this.page+"&busqueda[]="+array_string);
+                    }
+
+                  let url = 'products?page='+this.page+"&busqueda[]="+array_string
 
                   axios.get(url)
                   .then(response => {

@@ -12,11 +12,16 @@ class ProductsApiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+          $busqueda = request()->busqueda;
           $products = Product::orderBy('descuento', 'DESC')->paginate(36);
 
-          return ['products' => $products];
+          return [
+            'products' => $products,
+            'busqueda' => $busqueda
+
+        ];
     }
 
 }

@@ -1808,7 +1808,15 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.page++;
-      var url = 'products?page=' + this.page;
+      var busqueda = [1, 2, 3];
+      var array_string = busqueda.join('&busqueda[]=');
+
+      for (var i = 0; i < busqueda.length; i += 1) {
+        console.log(array_string);
+        console.log("products?page=" + this.page + "&busqueda[]=" + array_string);
+      }
+
+      var url = 'products?page=' + this.page + "&busqueda[]=" + array_string;
       axios.get(url).then(function (response) {
         var list_products = response.data.products.data;
 
