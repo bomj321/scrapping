@@ -43,32 +43,86 @@
                 }
             },
             methods: {
-              infiniteHandler($state) {                   
-                  this.page++
+              infiniteHandler($state) { 
 
-                  var busqueda = [1,2,3];
+                this.page++ 
 
-                  var array_string = busqueda.join('&busqueda[]=');
 
-                  for (var i = 0; i < busqueda.length; i+=1) {
-                       console.log(array_string);
-                      console.log("products?page="+this.page+"&busqueda[]="+array_string);
-                    }
+/**************INICIAR EVENTOS*******************/
+                var valueSelects = [];
 
-                  let url = 'products?page='+this.page+"&busqueda[]="+array_string
+                $('.multiselect__element span.multiselect__option--selected').map(function()
+                 {
+                         valueSelects.push($(this).text());
+                 }).get();
 
-                  axios.get(url)
-                  .then(response => {
+                 if (valueSelects.length == 0 || valueSelects == undefined ) {
 
-                      let list_products = response.data.products.data;
+                              var url = 'products?page='+this.page
+                              axios.get(url)
+                              .then(response => {
 
-                      if(list_products.length){
-                          this.products = this.products.concat(list_products);
-                          $state.loaded();
-                      }else{
-                          $state.complete();
-                      }
-                  })
+                                  let list_products = response.data.products.data;
+
+                                  if(list_products.length){
+                                      this.products = this.products.concat(list_products);
+                                      $state.loaded();
+                                  }else{
+                                      $state.complete();
+                                  }
+                              }) 
+
+                   }else{
+
+                          var array_string = valueSelects.join('&busqueda[]=');
+                          var url = 'products?page='+this.page+"&busqueda[]="+array_string   
+
+                          axios.get(url)
+                          .then(response => {
+
+                              let list_products = response.data.products.data;
+
+                              if(list_products.length){
+                                  this.products = this.products.concat(list_products);
+                                  $state.loaded();
+                              }else{
+                                  $state.complete();
+                              }
+                          })
+                  }                        
+
+
+/**************INICIAR EVENTOS*******************/
+
+                 
+/**********************EMITIR EVENTOS DESPUES DEL CLICK****************************/
+                  EventBus.$on('filter', (valueSelects) => {                          
+                          if (valueSelects.length == 0 || valueSelects == undefined ) {                              
+                              url = 'products?page='+this.page      
+
+
+                          }else{
+                            var array_string = valueSelects.join('&busqueda[]=');
+                            url = 'products?page='+this.page+"&busqueda[]="+array_string                            
+                          }                        
+                          
+
+                          axios.get(url)
+                          .then(response => {
+
+                              let list_products = response.data.products.data;
+
+                              if(list_products.length){
+                                  this.products = this.products.concat(list_products);
+                                  $state.loaded();
+                              }else{
+                                  $state.complete();
+                              }
+                          })
+               });
+
+
+/**********************EMITIR EVENTOS DESPUES DEL CLICK****************************/
               },
                    
              

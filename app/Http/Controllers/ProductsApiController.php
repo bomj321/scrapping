@@ -15,13 +15,31 @@ class ProductsApiController extends Controller
     public function index(Request $request)
     {
           $busqueda = request()->busqueda;
-          $products = Product::orderBy('descuento', 'DESC')->paginate(36);
 
-          return [
-            'products' => $products,
-            'busqueda' => $busqueda
+          if (empty($busqueda)) {
 
-        ];
+
+             $products = Product::orderBy('descuento', 'DESC')->paginate(36);
+               return [
+                   'products' => $products,                   
+
+               ];
+
+               
+          
+          }else{
+
+
+              $products = Product::orderBy('descuento', 'DESC')->paginate(36);
+               return [
+                   'products' => $products,
+                   'busqueda' => 'Tiene Algo' 
+
+               ];
+
+
+          }
+          
     }
 
 }

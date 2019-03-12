@@ -40,13 +40,19 @@ export default {
                          valueSelects.push($(this).text());
                  }).get();
 
+                     EventBus.$emit('filter',valueSelects);  
+
            }, 300);
 
 
-/*RETRASO LA FUNCION 500 MILISEGUNDOS PARA QUE APAREZCA EL ELEMENTO SPAN CON LA CLASE MULTISELECT*/          
+/*RETRASO LA FUNCION 500 MILISEGUNDOS PARA QUE APAREZCA EL ELEMENTO SPAN CON LA CLASE MULTISELECT*/         
+        
         
 
-         console.log(valueSelects);
+
+                 
+
+        
 
 
       }
