@@ -1,5 +1,5 @@
 <template>
-  <div class="row">
+  <div class="row" :key="componentKey">
       <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12" v-for="product in products">
               <div class="card text-center">
                   <div class="card-header">
@@ -39,7 +39,7 @@
                 return {
                     products: [],
                     page: 0,
-                    
+                    componentKey: 0,                    
                 }
             },
             methods: {
@@ -58,6 +58,8 @@
 
                  if (valueSelects.length == 0 || valueSelects == undefined ) {
 
+
+
                               var url = 'products?page='+this.page
                               axios.get(url)
                               .then(response => {
@@ -73,7 +75,6 @@
                               }) 
 
                    }else{
-
                           var array_string = valueSelects.join('&busqueda[]=');
                           var url = 'products?page='+this.page+"&busqueda[]="+array_string   
 
@@ -96,34 +97,21 @@
 
                  
 /**********************EMITIR EVENTOS DESPUES DEL CLICK****************************/
-                  EventBus.$on('filter', (valueSelects) => {                          
-                          if (valueSelects.length == 0 || valueSelects == undefined ) {                              
-                              url = 'products?page='+this.page      
+                  EventBus.$on('filter', (valueSelects) => { 
+
+                          //this.$destroy();
+                          this.page = 1;
+                          this.products = [];
+                          this.infiniteHandler($state);
 
 
-                          }else{
-                            var array_string = valueSelects.join('&busqueda[]=');
-                            url = 'products?page='+this.page+"&busqueda[]="+array_string                            
-                          }                        
-                          
-
-                          axios.get(url)
-                          .then(response => {
-
-                              let list_products = response.data.products.data;
-
-                              if(list_products.length){
-                                  this.products = this.products.concat(list_products);
-                                  $state.loaded();
-                              }else{
-                                  $state.complete();
-                              }
-                          })
                });
 
 
 /**********************EMITIR EVENTOS DESPUES DEL CLICK****************************/
               },
+
+
                    
              
             }

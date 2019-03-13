@@ -19,7 +19,7 @@ class ProductsApiController extends Controller
           if (empty($busqueda)) {
 
 
-             $products = Product::orderBy('descuento', 'DESC')->paginate(36);
+             $products = Product::orderBy('descuento', 'DESC')->paginate(4);
                return [
                    'products' => $products,                   
 
@@ -29,11 +29,19 @@ class ProductsApiController extends Controller
           
           }else{
 
+              $busqueda_filtrada = array_unique($busqueda);
+              $array_to_string   = implode(",", $busqueda_filtrada);
 
-              $products = Product::orderBy('descuento', 'DESC')->paginate(36);
+              $products = Product::orderBy('descuento', 'DESC')
+              ->Where('genero', 'Hombre')
+              ->paginate(4);
+
+
+
+              
                return [
                    'products' => $products,
-                   'busqueda' => 'Tiene Algo' 
+                   'busqueda' => $array_to_string
 
                ];
 

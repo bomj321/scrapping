@@ -21,8 +21,10 @@ class CreateProductsTable extends Migration
           $table->float('descuento');
           $table->string('link');
           $table->string('talla');
+          $table->string('talla_filtrada');
           $table->float('precio_anterior');
           $table->float('precio_oferta');
+          $table->string('genero');
           $table->dateTime('updated_at');
           $table->dateTime('created_at');
       });

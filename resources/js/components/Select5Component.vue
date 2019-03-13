@@ -115,8 +115,9 @@ export default {
   methods: {
       ValueSelected(option) {
 
+        
          var valueSelects = [];
-/*RETRASO LA FUNCION 500 MILISEGUNDOS PARA QUE APAREZCA EL ELEMENTO SPAN CON LA CLASE MULTISELECT*/        
+/*RETRASO LA FUNCION 300 MILISEGUNDOS PARA QUE APAREZCA EL ELEMENTO SPAN CON LA CLASE MULTISELECT*/        
 
           setTimeout(function(){
 
@@ -125,13 +126,12 @@ export default {
                          valueSelects.push($(this).text());
                  }).get();
 
+                     EventBus.$emit('filter',valueSelects);  
+
            }, 300);
 
 
-/*RETRASO LA FUNCION 500 MILISEGUNDOS PARA QUE APAREZCA EL ELEMENTO SPAN CON LA CLASE MULTISELECT*/          
-        
-
-         console.log(valueSelects);
+/*RETRASO LA FUNCION 300 MILISEGUNDOS PARA QUE APAREZCA EL ELEMENTO SPAN CON LA CLASE MULTISELECT*/     
 
 
       }

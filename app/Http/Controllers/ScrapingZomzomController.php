@@ -58,10 +58,20 @@ class ScrapingZomzomController extends Controller
                 $productsArray['link'][] = $array_products['ofertas'][$b]['link'];
         /*SECCION DEL LINK*/
 
-        /*SECCION DE LA TALLA*/
+        /*SECCION DE LA TALLA Y TALLA PARA FILTRAR*/
 
-                $productsArray['talla'][] = str_replace('_',' ',trim($array_products['ofertas'][$b]['talla']));
-        /*SECCION DE LA TALLA*/
+              if (is_numeric($array_products['ofertas'][$b]['talla']) AND $array_products['ofertas'][$b]['talla'] < 34) {
+                $talla_filtrada = '<34';
+              }elseif (is_numeric($array_products['ofertas'][$b]['talla']) AND $array_products['ofertas'][$b]['talla'] > 49) {
+                $talla_filtrada = '49>';
+              }else{
+                $talla_filtrada = str_replace('_',' ',trim($array_products['ofertas'][$b]['talla']));
+              }
+
+
+                $productsArray['talla_filtrada'][] = $talla_filtrada;
+                $productsArray['talla'][]          = str_replace('_',' ',trim($array_products['ofertas'][$b]['talla']));
+        /*SECCION DE LA TALLA Y TALLA PARA FILTRAR*/
 
         /*SECCION DEL PRECIO ANTERIOR*/
                 $productsArray['precio_anterior'][] = $array_products['ofertas'][$b]['precio_anterior'];
@@ -70,6 +80,10 @@ class ScrapingZomzomController extends Controller
         /*SECCION DEL PRECIO OFERTA*/
                 $productsArray['precio_oferta'][] = $array_products['ofertas'][$b]['precio_oferta'];
         /*SECCION DEL PRECIO OFERTA*/
+
+         /*SECCION DEL GENERO*/
+                $productsArray['genero'][] = $array_products['ofertas'][$b]['genero'];
+        /*SECCION DEL GENERO*/
                  }
 
       /******************ARRAY DE PRODUCTOS*******************************/
@@ -85,10 +99,13 @@ class ScrapingZomzomController extends Controller
                $seccion_modelo          = $productsArray['modelo'][$c];
                $seccion_imagen          = $productsArray['imagen'][$c];
                $seccion_descuento       = $productsArray['descuento'][$c];
-               $seccion_link            = $productsArray['link'][$c];
+               $seccion_link            = $productsArray['link'][$c];              
                $seccion_talla           = $productsArray['talla'][$c];
+               $seccion_talla_filtrada  = $productsArray['talla_filtrada'][$c];
                $seccion_precio_anterior = $productsArray['precio_anterior'][$c];
                $seccion_precio_oferta   = $productsArray['precio_oferta'][$c];
+               $seccion_genero          = $productsArray['genero'][$c];
+
 
                DB::table('products')->insert(
                   [
@@ -98,8 +115,10 @@ class ScrapingZomzomController extends Controller
                     'descuento'       => $seccion_descuento,
                     'link'            => $seccion_link,
                     'talla'           => $seccion_talla,
+                    'talla_filtrada'  => $seccion_talla_filtrada,
                     'precio_anterior' => $seccion_precio_anterior,
                     'precio_oferta'   => $seccion_precio_oferta,
+                    'genero'          => $seccion_genero,
                     'updated_at'      => date("Y-m-d H:i:s"),
                     'created_at'      => date("Y-m-d H:i:s"),
                  ]

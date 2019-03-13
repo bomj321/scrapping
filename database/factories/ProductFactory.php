@@ -10,9 +10,11 @@ $factory->define(App\Product::class, function (Faker $faker) {
       'descuento'       => $faker->randomDigitNotNull, // secret
       'link'            => $faker->url,
       'talla'           => $faker->randomDigitNotNull,
+      'talla_filtrada'  => $faker->randomDigitNotNull,
       'precio_anterior' => $faker->randomFloat($nbMaxDecimals = NULL, $min = 0, $max = 50),
       'precio_oferta'   => $faker->randomFloat($nbMaxDecimals = NULL, $min = 0, $max = 50),
-      'updated_at'   => $faker->dateTime($max = 'now', $timezone = null),
-      'created_at'   => $faker->dateTime($max = 'now', $timezone = null),
+      'genero'          => $faker->name,
+      'updated_at'      => $faker->dateTime($max = 'now', $timezone = null),
+      'created_at'      => $faker->dateTime($max = 'now', $timezone = null),
     ];
 });
