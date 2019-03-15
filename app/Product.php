@@ -20,6 +20,7 @@ class Product extends Model
         'talla_filtrada',
         'precio_anterior',
         'precio_oferta',
+        'precio_filtrada',
         'genero',
     ];
 

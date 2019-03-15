@@ -24,29 +24,29 @@ export default {
       value: [],
       valueSelects: [], 
       options: [
-        { name: 'Accesorios'},
-        { name: 'Abrigos / Chaquetas'},
+        { name: 'Accesorios', section: 'ACCESSORY'},
+        { name: 'Abrigos / Chaquetas', section: 'OUTERWEAR'},
 
-        { name: 'Americanas / Trajes'}, 
-        { name: 'Bolsos'}, 
-        { name: 'Bañadores'}, 
-        { name: 'Camisas / Camisetas / Polos'}, 
-        { name: 'Deportivas / Zapatos'}, 
-        { name: 'Faldas'}, 
-        { name: 'Gafas de sol / Monturas'},
+        { name: 'Americanas / Trajes', section: 'BLAZER'}, 
+        { name: 'Bolsos', section: 'HANDBAG'}, 
+        { name: 'Bañadores', section: 'SWIMWEAR'}, 
+        { name: 'Camisas / Camisetas / Polos', section: 'SHIRT'}, 
+        { name: 'Deportivas / Zapatos', section: 'SHOES'}, 
+        { name: 'Faldas', section: 'SKIRT'}, 
+        { name: 'Gafas de sol / Monturas', section: 'EYEWEAR'},
 
-        { name: 'Pantalones'},
-        { name: 'Perfumes'},
-        { name: 'Relojes'},
-        { name: 'Ropa interior'},
-        { name: 'Shorts'},
-        { name: 'Sudaderas / Jerséis'},        
+        { name: 'Pantalones', section: 'PANTS'},
+        { name: 'Perfumes', section: 'ABIS_DRUGSTORE'},
+        { name: 'Relojes', section: 'WATCH'},
+        { name: 'Ropa interior', section: 'SLEEPWEAR'},
+        { name: 'Shorts', section: 'SHORTS'},
+        { name: 'Sudaderas / Jerséis', section: 'SWEATER'},        
       ]
     }
   },
   methods: {
       ValueSelected(option) {  
-                         this.valueSelects.push(option.name);
+                         this.valueSelects.push(option.section);
                          EventBus.$emit('filter',this.valueSelects);
 
       },
@@ -54,12 +54,12 @@ export default {
       ValueRemoved(removedOption){
 
                 for( var i = 0; i < this.valueSelects.length; i++){ 
-                 if (this.valueSelects[i] === removedOption.name) {
+                 if (this.valueSelects[i] === removedOption.section) {
                        this.valueSelects.splice(i, 1); 
                  }
                }
 
-              //console.log(this.valueSelects);
+              console.log(this.valueSelects);
               EventBus.$emit('filter',this.valueSelects);
 
 

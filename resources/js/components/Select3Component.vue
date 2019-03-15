@@ -22,17 +22,17 @@ export default {
       value: [],
       valueSelects:[],
       options: [
-         { name:'Menos de 25€'},
-         { name: 'De 25€ hasta 50€'},
-         { name: 'De 50€ hasta 100€'},
-         { name: 'Más de 100€'},      
+         { name: 'Menos de 25€',price: 'Menos de 25'},
+         { name: 'De 25€ hasta 50€',price: 'De 25 hasta 50' },
+         { name: 'De 50€ hasta 100€',price: 'De 50 hasta 100'},
+         { name: 'Más de 100€',price: 'Mas de 100'},      
       ]
     }
   },
   methods: {
       ValueSelected(option) {
 
-                         this.valueSelects.push(option.name);
+                         this.valueSelects.push(option.price);
                          EventBus.$emit('filter',this.valueSelects);    
 
 
@@ -41,7 +41,7 @@ export default {
       ValueRemoved(removedOption){
 
                 for( var i = 0; i < this.valueSelects.length; i++){ 
-                 if (this.valueSelects[i] === removedOption.name) {
+                 if (this.valueSelects[i] === removedOption.price) {
                        this.valueSelects.splice(i, 1); 
                  }
                }

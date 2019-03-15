@@ -1,5 +1,5 @@
 <template>
-  <div class="row" :key="componentKey">
+  <div class="row">
       <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12" v-for="product in products">
               <div class="card text-center">
                   <div class="card-header">
@@ -39,7 +39,6 @@
                 return {
                     products: [],
                     page: 0,
-                    componentKey: 0, 
                     infiniteId: +new Date(),
                     valueSelectsEmitted: []                   
                 }

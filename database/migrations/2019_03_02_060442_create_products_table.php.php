@@ -24,6 +24,7 @@ class CreateProductsTable extends Migration
           $table->string('talla_filtrada');
           $table->float('precio_anterior');
           $table->float('precio_oferta');
+          $table->float('precio_filtrada');
           $table->string('genero');
           $table->dateTime('updated_at');
           $table->dateTime('created_at');

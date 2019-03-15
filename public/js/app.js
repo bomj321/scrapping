@@ -1801,7 +1801,6 @@ __webpack_require__.r(__webpack_exports__);
     return {
       products: [],
       page: 0,
-      componentKey: 0,
       infiniteId: +new Date(),
       valueSelectsEmitted: []
     };
@@ -1952,51 +1951,66 @@ __webpack_require__.r(__webpack_exports__);
       value: [],
       valueSelects: [],
       options: [{
-        name: 'Accesorios'
+        name: 'Accesorios',
+        section: 'ACCESSORY'
       }, {
-        name: 'Abrigos / Chaquetas'
+        name: 'Abrigos / Chaquetas',
+        section: 'OUTERWEAR'
       }, {
-        name: 'Americanas / Trajes'
+        name: 'Americanas / Trajes',
+        section: 'BLAZER'
       }, {
-        name: 'Bolsos'
+        name: 'Bolsos',
+        section: 'HANDBAG'
       }, {
-        name: 'Bañadores'
+        name: 'Bañadores',
+        section: 'SWIMWEAR'
       }, {
-        name: 'Camisas / Camisetas / Polos'
+        name: 'Camisas / Camisetas / Polos',
+        section: 'SHIRT'
       }, {
-        name: 'Deportivas / Zapatos'
+        name: 'Deportivas / Zapatos',
+        section: 'SHOES'
       }, {
-        name: 'Faldas'
+        name: 'Faldas',
+        section: 'SKIRT'
       }, {
-        name: 'Gafas de sol / Monturas'
+        name: 'Gafas de sol / Monturas',
+        section: 'EYEWEAR'
       }, {
-        name: 'Pantalones'
+        name: 'Pantalones',
+        section: 'PANTS'
       }, {
-        name: 'Perfumes'
+        name: 'Perfumes',
+        section: 'ABIS_DRUGSTORE'
       }, {
-        name: 'Relojes'
+        name: 'Relojes',
+        section: 'WATCH'
       }, {
-        name: 'Ropa interior'
+        name: 'Ropa interior',
+        section: 'SLEEPWEAR'
       }, {
-        name: 'Shorts'
+        name: 'Shorts',
+        section: 'SHORTS'
       }, {
-        name: 'Sudaderas / Jerséis'
+        name: 'Sudaderas / Jerséis',
+        section: 'SWEATER'
       }]
     };
   },
   methods: {
     ValueSelected: function ValueSelected(option) {
-      this.valueSelects.push(option.name);
+      this.valueSelects.push(option.section);
       EventBus.$emit('filter', this.valueSelects);
     },
     ValueRemoved: function ValueRemoved(removedOption) {
       for (var i = 0; i < this.valueSelects.length; i++) {
-        if (this.valueSelects[i] === removedOption.name) {
+        if (this.valueSelects[i] === removedOption.section) {
           this.valueSelects.splice(i, 1);
         }
-      } //console.log(this.valueSelects);
+      }
 
-
+      console.log(this.valueSelects);
       EventBus.$emit('filter', this.valueSelects);
     }
   }
@@ -2034,24 +2048,28 @@ __webpack_require__.r(__webpack_exports__);
       value: [],
       valueSelects: [],
       options: [{
-        name: 'Menos de 25€'
+        name: 'Menos de 25€',
+        price: 'Menos de 25'
       }, {
-        name: 'De 25€ hasta 50€'
+        name: 'De 25€ hasta 50€',
+        price: 'De 25 hasta 50'
       }, {
-        name: 'De 50€ hasta 100€'
+        name: 'De 50€ hasta 100€',
+        price: 'De 50 hasta 100'
       }, {
-        name: 'Más de 100€'
+        name: 'Más de 100€',
+        price: 'Mas de 100'
       }]
     };
   },
   methods: {
     ValueSelected: function ValueSelected(option) {
-      this.valueSelects.push(option.name);
+      this.valueSelects.push(option.price);
       EventBus.$emit('filter', this.valueSelects);
     },
     ValueRemoved: function ValueRemoved(removedOption) {
       for (var i = 0; i < this.valueSelects.length; i++) {
-        if (this.valueSelects[i] === removedOption.name) {
+        if (this.valueSelects[i] === removedOption.price) {
           this.valueSelects.splice(i, 1);
         }
       } //console.log(this.valueSelects);
@@ -37552,7 +37570,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { key: _vm.componentKey, staticClass: "row" },
+    { staticClass: "row" },
     [
       _vm._l(_vm.products, function(product) {
         return _c(

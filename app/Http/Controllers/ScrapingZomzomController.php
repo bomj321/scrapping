@@ -78,7 +78,27 @@ class ScrapingZomzomController extends Controller
         /*SECCION DEL PRECIO ANTERIOR*/
 
         /*SECCION DEL PRECIO OFERTA*/
-                $productsArray['precio_oferta'][] = $array_products['ofertas'][$b]['precio_oferta'];
+
+               $precio_range = $array_products['ofertas'][$b]['precio_oferta'];
+
+               if ($precio_range < 25) {
+                  $precio_range = 'Menos de 25';
+                }elseif($precio_range >= 25 AND $precio_range <= 50){
+                  $precio_range = 'De 25 hasta 50';
+                }elseif($precio_range >= 50 AND $precio_range <= 100){
+                  $precio_range = 'De 50 hasta 100';
+                }else{
+                  $precio_range = 'Mas de 100';
+                } 
+
+                $productsArray['precio_filtrada'][] = $precio_range;
+                $productsArray['precio_oferta'][]   = $array_products['ofertas'][$b]['precio_oferta'];
+
+
+
+
+
+
         /*SECCION DEL PRECIO OFERTA*/
 
          /*SECCION DEL GENERO*/
@@ -104,6 +124,7 @@ class ScrapingZomzomController extends Controller
                $seccion_talla_filtrada  = $productsArray['talla_filtrada'][$c];
                $seccion_precio_anterior = $productsArray['precio_anterior'][$c];
                $seccion_precio_oferta   = $productsArray['precio_oferta'][$c];
+               $seccion_precio_filtrada = $productsArray['precio_filtrada'][$c];
                $seccion_genero          = $productsArray['genero'][$c];
 
 
@@ -118,6 +139,7 @@ class ScrapingZomzomController extends Controller
                     'talla_filtrada'  => $seccion_talla_filtrada,
                     'precio_anterior' => $seccion_precio_anterior,
                     'precio_oferta'   => $seccion_precio_oferta,
+                    'precio_filtrada' => $seccion_precio_filtrada,
                     'genero'          => $seccion_genero,
                     'updated_at'      => date("Y-m-d H:i:s"),
                     'created_at'      => date("Y-m-d H:i:s"),
