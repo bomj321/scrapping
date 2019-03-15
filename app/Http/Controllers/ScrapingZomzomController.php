@@ -19,7 +19,7 @@ class ScrapingZomzomController extends Controller
                 DB::table('products')->truncate();
 
                   $productsArray = array();
-                 for ($a=0; $a < 16 ; $a++) {
+                 for ($a=0; $a < 110 ; $a++) {
 
                   $response = $client->request('POST', 'https://www.zoomzon.es/getOfertasFiltradas', [
                       'json'    => ['page' => $a],

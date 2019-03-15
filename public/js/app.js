@@ -1796,6 +1796,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -37664,14 +37667,14 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "row" },
-    [
+  return _c("div", { staticClass: "container" }, [
+    _c(
+      "div",
+      { staticClass: "row" },
       _vm._l(_vm.products, function(product) {
         return _c(
           "div",
-          { staticClass: "col-lg-3 col-md-6 col-sm-12 col-xs-12" },
+          { staticClass: "col-lg-3 col-md-6 col-sm-6 col-xs-12" },
           [
             _c("div", { staticClass: "card text-center" }, [
               _c("div", { staticClass: "card-header" }, [
@@ -37685,9 +37688,9 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(
-                  "\n                  " +
+                  "\n                      " +
                     _vm._s(product.modelo) +
-                    "\n                "
+                    "\n                    "
                 )
               ]),
               _vm._v(" "),
@@ -37730,9 +37733,10 @@ var render = function() {
           ]
         )
       }),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
+      0
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
       _c(
         "div",
         { staticClass: "col-lg-12 col-md-12 col-sm-12 col-xs-12" },
@@ -37761,9 +37765,8 @@ var render = function() {
         ],
         1
       )
-    ],
-    2
-  )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {

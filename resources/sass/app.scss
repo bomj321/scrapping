@@ -78,7 +78,8 @@ hr {
   margin-top: 80px;
   margin-left: 40px;
   margin-right: 40px;
-  border: none
+  border: none;
+  width: 80%;
 }
 
 .product_seccion{
@@ -106,9 +107,9 @@ hr {
 
 .card img{
   width: 100%;
-  min-height: 280px;
-  max-height: 280px;
-  max-width: 353.5px;
+  min-height: 150px;
+  max-height: 150px;
+  max-width: 200px;
 }
 
 .span_precio{
@@ -243,22 +244,82 @@ hr {
   }
 }
 
-@media only screen and (max-width: 728px) {
+@media only screen and (max-width: 860px) {
   .circulo_rebaja{
-    margin-left: 15rem;
+    margin-left: 9rem;
+  }
+
+  .precio_linea{
+     font-size: 10px;
+  }
+
+  .span_precio{
+      font-size: 20px;
+  }
+
+  .button_product{
+      font-size: 15px;
   }
 }
 
-@media only screen and (max-width: 611px) {
+@media only screen and (max-width: 734px) {
   .circulo_rebaja{
-    margin-left: 11rem;
+    margin-left: 7rem;
   }
 }
 
-@media only screen and (max-width: 495px) {
+
+
+
+
+@media only screen and (max-width: 628px) {
   .circulo_rebaja{
-    margin-left: 6rem;
+    margin-left: 5rem;
   }
+}
+
+@media only screen and (max-width: 573px) {
+  .circulo_rebaja{
+    margin-left: 9rem;
+  }
+
+  .card{
+      width: 60%;
+      height: 82%;
+  }
+
+
+}
+
+@media only screen and (max-width: 573px) {
+  .circulo_rebaja{
+    margin-left: 7rem;
+  }  
+
+  .card{
+      margin-left: 90px;
+  }
+
+}
+
+@media only screen and (max-width: 440px) {
+  
+  .card{
+      margin-left: 70px;
+  }
+
+  .contenido_footer{
+    font-size: 10px;
+    font-weight: 500;
+  }
+
+}
+
+@media only screen and (max-width: 400px) {
+  .circulo_rebaja{
+    margin-left: 5rem;
+  }  
+
 }
 
 

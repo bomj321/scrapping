@@ -19,7 +19,7 @@ class ProductsApiController extends Controller
           if (empty($busqueda) AND $busqueda == null) {
 
 
-             $products = Product::orderBy('descuento', 'DESC')->paginate(4);
+             $products = Product::orderBy('descuento', 'DESC')->paginate(32);
                return [
                    'products' => $products,                   
                    'busqueda' => 'No hay Nada'
