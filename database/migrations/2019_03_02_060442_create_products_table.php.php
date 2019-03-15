@@ -16,6 +16,7 @@ class CreateProductsTable extends Migration
       Schema::create('products', function (Blueprint $table) {
           $table->increments('id_product');
           $table->string('seccion');
+          $table->string('marca');
           $table->string('modelo');
           $table->string('imagen');
           $table->float('descuento');
@@ -24,7 +25,7 @@ class CreateProductsTable extends Migration
           $table->string('talla_filtrada');
           $table->float('precio_anterior');
           $table->float('precio_oferta');
-          $table->float('precio_filtrada');
+          $table->string('precio_filtrada');
           $table->string('genero');
           $table->dateTime('updated_at');
           $table->dateTime('created_at');

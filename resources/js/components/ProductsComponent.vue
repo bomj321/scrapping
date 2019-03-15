@@ -40,14 +40,15 @@
                     products: [],
                     page: 0,
                     infiniteId: +new Date(),
-                    valueSelectsEmitted: []                   
+                    valueSelectsEmitted: [],                   
                 }
             },
             methods: {
               infiniteHandler($state){ 
                 this.page++ 
 
-                /**********************EMITIR EVENTOS DESPUES DEL CLICK****************************/
+    /**********************EMITIR EVENTOS DESPUES DEL CLICK****************************/
+/***********************EVENTO PARA LLENAR LOS FILTROS************************************/    
                       EventBus.$on('filter', (valueSelects) => { 
                                       this.page = 0;
                                       this.products = [];
@@ -55,19 +56,51 @@
 
                           if (valueSelects.length == 0 || valueSelects == undefined ) {
                                   this.valueSelects = null;
-                          }else{ 
-                              this.valueSelectsEmitted = valueSelects;                         
+                          }else{                            
+
+                                  for (var i = 0; i < valueSelects.length; i++) {
+                                     this.valueSelectsEmitted.push(valueSelects[i]);                                                               
+                                      
+                                  }                            
+
                           } 
-                        // console.log(this.valueSelectsEmitted);                          
 
                    }); 
-                  /**********************EMITIR EVENTOS DESPUES DEL CLICK****************************/
+
+/***********************EVENTO PARA LLENAR LOS FILTROS************************************/
+                     EventBus.$on('filterOut', (valueSelects) => { 
+                                      this.page = 0;
+                                      this.products = [];
+                                      this.infiniteId += 1;
+
+                                   for(var i = 0; i < this.valueSelectsEmitted.length; i++){ 
+                                         if (this.valueSelectsEmitted[i] === valueSelects) {
+                                               this.valueSelectsEmitted.splice(i, 1);                                               
+                                         }
+                                       if (this.valueSelectsEmitted[i] == '') {
+                                            this.valueSelectsEmitted.splice(i, 1); 
+                                          }                                                                                             
+        
+
+                                  }                                          
+                              
+                            
+                   });    
 
 
+    /**********************EMITIR EVENTOS DESPUES DEL CLICK****************************/
 
-/**************INICIAR EVENTOS*******************/                          
+ //console.log(this.valueSelectsEmitted); 
 
-                 if (this.valueSelectsEmitted.length == 0 || this.valueSelectsEmitted == undefined ) { 
+/**************INICIAR EVENTOS*******************/ 
+
+/****ELIMINAR DUPLICADOS DE LOS FILTROS YA QUE GENERA CONSULTA REPETIDA****/
+  let valueSelectedWithOutDuplicates = this.valueSelectsEmitted.filter((valor, indiceActual, arreglo) => arreglo.indexOf(valor) === indiceActual);
+  console.log(valueSelectedWithOutDuplicates + ' FILTER');
+/****ELIMINAR DUPLICADOS DE LOS FILTROS YA QUE GENERA CONSULTA REPETIDA****/
+
+
+                 if (valueSelectedWithOutDuplicates.length == 0 || valueSelectedWithOutDuplicates == undefined) { 
 
                               var url = 'products?page='+this.page
                               axios.get(url)
@@ -84,7 +117,7 @@
                               }) 
 
                    }else{
-                          var array_string = this.valueSelectsEmitted.join('&busqueda[]=');
+                          var array_string = valueSelectedWithOutDuplicates.join('&busqueda[]=');
                           var url = 'products?page='+this.page+"&busqueda[]="+array_string   
 
                           axios.get(url)

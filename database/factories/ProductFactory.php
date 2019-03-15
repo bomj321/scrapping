@@ -5,6 +5,7 @@ use Faker\Generator as Faker;
 $factory->define(App\Product::class, function (Faker $faker) {
     return [
       'seccion'         => $faker->name,
+      'marca'           => $faker->text,
       'modelo'          => $faker->text,
       'imagen'          => $faker->imageUrl($width = 400, $height = 680),
       'descuento'       => $faker->randomDigitNotNull, // secret

@@ -12,6 +12,7 @@ class Product extends Model
     //CAMPOS DE LA TABLA
     protected $fillable = [
         'seccion',
+        'marca',
         'modelo',
         'imagen',
         'descuento',
@@ -20,6 +21,17 @@ class Product extends Model
         'talla_filtrada',
         'precio_anterior',
         'precio_oferta',
+        'precio_filtrada',
+        'genero',
+    ];
+
+    /**
+     * The columns of the full text index
+     */
+    protected $searchable = [
+        'seccion',
+        'marca',
+        'talla_filtrada',
         'precio_filtrada',
         'genero',
     ];

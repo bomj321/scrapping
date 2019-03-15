@@ -2,7 +2,7 @@
 <template>
  <div>
   <label class="typo__label">Talla</label>
-  <multiselect v-model="value" :options="options" :multiple="true" group-values="tallas" group-label="tiposTallas" :group-select="false" placeholder="Escoja Un Filtro" track-by="name" label="name" @select='ValueSelected' @remove='ValueSelected'>
+  <multiselect v-model="value" :options="options" :multiple="true" group-values="tallas" group-label="tiposTallas" :group-select="false" placeholder="Escoja Un Filtro" track-by="name" label="name" @select='ValueSelected' @remove='ValueRemoved'>
       <span slot="noResult">No hay elementos lo siento</span>
   </multiselect>
 </div>
@@ -130,8 +130,8 @@ export default {
                  }
                }
 
-              //console.log(this.valueSelects);
-              EventBus.$emit('filter',this.valueSelects);
+              console.log(removedOption.name);
+              EventBus.$emit('filterOut',removedOption.name);
        
       }
   }

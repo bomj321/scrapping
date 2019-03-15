@@ -2,7 +2,7 @@
 <template>
   <div>
        <label class="typo__label">Marca</label>
-      <multiselect v-model="value" :options="options" :multiple="true" :close-on-select="false" :clear-on-select="false" :preserve-search="true" placeholder="Escoja Un Filtro" label="name" track-by="name" :preselect-first="false" @select='ValueSelected' @remove='ValueSelected'>
+      <multiselect v-model="value" :options="options" :multiple="true" :close-on-select="false" :clear-on-select="false" :preserve-search="true" placeholder="Escoja Un Filtro" label="name" track-by="name" :preselect-first="false" @select='ValueSelected' @remove='ValueRemoved'>
 
             <template slot="selection" slot-scope="{ values, search, isOpen }">
               
@@ -145,14 +145,14 @@ export default {
 
       ValueRemoved(removedOption){
 
-                for( var i = 0; i < this.valueSelects.length; i++){ 
+                 for( var i = 0; i < this.valueSelects.length; i++){ 
                  if (this.valueSelects[i] === removedOption.name) {
                        this.valueSelects.splice(i, 1); 
                  }
                }
 
-              //console.log(this.valueSelects);
-              EventBus.$emit('filter',this.valueSelects);
+              console.log(removedOption.name);
+              EventBus.$emit('filterOut',removedOption.name);
        
       }
 

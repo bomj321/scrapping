@@ -1812,6 +1812,8 @@ __webpack_require__.r(__webpack_exports__);
       this.page++;
       /**********************EMITIR EVENTOS DESPUES DEL CLICK****************************/
 
+      /***********************EVENTO PARA LLENAR LOS FILTROS************************************/
+
       EventBus.$on('filter', function (valueSelects) {
         _this.page = 0;
         _this.products = [];
@@ -1820,15 +1822,42 @@ __webpack_require__.r(__webpack_exports__);
         if (valueSelects.length == 0 || valueSelects == undefined) {
           _this.valueSelects = null;
         } else {
-          _this.valueSelectsEmitted = valueSelects;
-        } // console.log(this.valueSelectsEmitted);                          
+          for (var i = 0; i < valueSelects.length; i++) {
+            _this.valueSelectsEmitted.push(valueSelects[i]);
+          }
+        }
+      });
+      /***********************EVENTO PARA LLENAR LOS FILTROS************************************/
 
+      EventBus.$on('filterOut', function (valueSelects) {
+        _this.page = 0;
+        _this.products = [];
+        _this.infiniteId += 1;
+
+        for (var i = 0; i < _this.valueSelectsEmitted.length; i++) {
+          if (_this.valueSelectsEmitted[i] === valueSelects) {
+            _this.valueSelectsEmitted.splice(i, 1);
+          }
+
+          if (_this.valueSelectsEmitted[i] == '') {
+            _this.valueSelectsEmitted.splice(i, 1);
+          }
+        }
       });
       /**********************EMITIR EVENTOS DESPUES DEL CLICK****************************/
+      //console.log(this.valueSelectsEmitted); 
 
       /**************INICIAR EVENTOS*******************/
 
-      if (this.valueSelectsEmitted.length == 0 || this.valueSelectsEmitted == undefined) {
+      /****ELIMINAR DUPLICADOS DE LOS FILTROS YA QUE GENERA CONSULTA REPETIDA****/
+
+      var valueSelectedWithOutDuplicates = this.valueSelectsEmitted.filter(function (valor, indiceActual, arreglo) {
+        return arreglo.indexOf(valor) === indiceActual;
+      });
+      console.log(valueSelectedWithOutDuplicates + ' FILTER');
+      /****ELIMINAR DUPLICADOS DE LOS FILTROS YA QUE GENERA CONSULTA REPETIDA****/
+
+      if (valueSelectedWithOutDuplicates.length == 0 || valueSelectedWithOutDuplicates == undefined) {
         var url = 'products?page=' + this.page;
         axios.get(url).then(function (response) {
           var list_products = response.data.products.data;
@@ -1841,7 +1870,7 @@ __webpack_require__.r(__webpack_exports__);
           }
         });
       } else {
-        var array_string = this.valueSelectsEmitted.join('&busqueda[]=');
+        var array_string = valueSelectedWithOutDuplicates.join('&busqueda[]=');
         var url = 'products?page=' + this.page + "&busqueda[]=" + array_string;
         axios.get(url).then(function (response) {
           var list_products = response.data.products.data;
@@ -1909,10 +1938,10 @@ __webpack_require__.r(__webpack_exports__);
         if (this.valueSelects[i] === removedOption.name) {
           this.valueSelects.splice(i, 1);
         }
-      } //console.log(this.valueSelects);
+      } //console.log(this.valueSelects+ ' Select1');
 
 
-      EventBus.$emit('filter', this.valueSelects);
+      EventBus.$emit('filterOut', removedOption.name);
     }
   }
 });
@@ -1969,8 +1998,8 @@ __webpack_require__.r(__webpack_exports__);
         name: 'Camisas / Camisetas / Polos',
         section: 'SHIRT'
       }, {
-        name: 'Deportivas / Zapatos',
-        section: 'SHOES'
+        name: 'Zapatos',
+        section: 'SHOE'
       }, {
         name: 'Faldas',
         section: 'SKIRT'
@@ -1982,7 +2011,7 @@ __webpack_require__.r(__webpack_exports__);
         section: 'PANTS'
       }, {
         name: 'Perfumes',
-        section: 'ABIS_DRUGSTORE'
+        section: 'ABIS DRUGSTORE'
       }, {
         name: 'Relojes',
         section: 'WATCH'
@@ -1995,6 +2024,9 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         name: 'Sudaderas / Jerséis',
         section: 'SWEATER'
+      }, {
+        name: 'Artículos Deportivos',
+        section: 'SPORTING GOODS'
       }]
     };
   },
@@ -2010,8 +2042,8 @@ __webpack_require__.r(__webpack_exports__);
         }
       }
 
-      console.log(this.valueSelects);
-      EventBus.$emit('filter', this.valueSelects);
+      console.log(removedOption.section);
+      EventBus.$emit('filterOut', removedOption.section);
     }
   }
 });
@@ -2072,10 +2104,10 @@ __webpack_require__.r(__webpack_exports__);
         if (this.valueSelects[i] === removedOption.price) {
           this.valueSelects.splice(i, 1);
         }
-      } //console.log(this.valueSelects);
+      }
 
-
-      EventBus.$emit('filter', this.valueSelects);
+      console.log(removedOption.price);
+      EventBus.$emit('filterOut', removedOption.price);
     }
   }
 });
@@ -2310,10 +2342,10 @@ __webpack_require__.r(__webpack_exports__);
         if (this.valueSelects[i] === removedOption.name) {
           this.valueSelects.splice(i, 1);
         }
-      } //console.log(this.valueSelects);
+      }
 
-
-      EventBus.$emit('filter', this.valueSelects);
+      console.log(removedOption.name);
+      EventBus.$emit('filterOut', removedOption.name);
     }
   }
 });
@@ -2500,10 +2532,10 @@ __webpack_require__.r(__webpack_exports__);
         if (this.valueSelects[i] === removedOption.name) {
           this.valueSelects.splice(i, 1);
         }
-      } //console.log(this.valueSelects);
+      }
 
-
-      EventBus.$emit('filter', this.valueSelects);
+      console.log(removedOption.name);
+      EventBus.$emit('filterOut', removedOption.name);
     }
   }
 });
@@ -37701,7 +37733,7 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("label", { staticClass: "typo__label" }, [_vm._v("Tipo de Prenda")]),
+      _c("label", { staticClass: "typo__label" }, [_vm._v("Genero")]),
       _vm._v(" "),
       _c("multiselect", {
         attrs: {
@@ -37922,7 +37954,7 @@ var render = function() {
           "track-by": "name",
           "preselect-first": false
         },
-        on: { select: _vm.ValueSelected, remove: _vm.ValueSelected },
+        on: { select: _vm.ValueSelected, remove: _vm.ValueRemoved },
         scopedSlots: _vm._u([
           {
             key: "selection",
@@ -37992,7 +38024,7 @@ var render = function() {
             "track-by": "name",
             label: "name"
           },
-          on: { select: _vm.ValueSelected, remove: _vm.ValueSelected },
+          on: { select: _vm.ValueSelected, remove: _vm.ValueRemoved },
           model: {
             value: _vm.value,
             callback: function($$v) {

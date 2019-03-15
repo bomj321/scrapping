@@ -33,11 +33,18 @@ class ScrapingZomzomController extends Controller
                  for ($b=0; $b < $number_products; $b++) {
 
         /*SECCION DEL PRODUCTO*/
-                  $productsArray['seccion'][] = str_replace('FIND ','',trim($array_products['ofertas'][$b]['seccion']));
+                  $product_seccion = str_replace('FIND ','',trim($array_products['ofertas'][$b]['seccion']));
+
+
+                  $productsArray['seccion'][] = str_replace('_',' ',$product_seccion);
         /*SECCION DEL PRODUCTO*/
 
+          /*SECCION DE LA MARCA*/
+                $productsArray['marca'][] = $array_products['ofertas'][$b]['marca'];
+          /*SECCION DE LA MARCA*/
 
-          /*SECCION DEL PRODUCTO*/
+
+          /*SECCION DEL MODELO*/
                 $productsArray['modelo'][] = $array_products['ofertas'][$b]['modelo'];
           /*SECCION DEL MODELO*/
 
@@ -116,6 +123,7 @@ class ScrapingZomzomController extends Controller
       /*******************GUARDAR PRODUCTOS***************/
       for ($c=0; $c < count($productsArray['seccion']) ; $c++) {
                $seccion_producto        = $productsArray['seccion'][$c];
+               $seccion_marca           = $productsArray['marca'][$c];
                $seccion_modelo          = $productsArray['modelo'][$c];
                $seccion_imagen          = $productsArray['imagen'][$c];
                $seccion_descuento       = $productsArray['descuento'][$c];
@@ -131,6 +139,7 @@ class ScrapingZomzomController extends Controller
                DB::table('products')->insert(
                   [
                     'seccion'         => $seccion_producto,
+                    'marca'           => $seccion_marca,
                     'modelo'          => $seccion_modelo,
                     'imagen'          => $seccion_imagen,
                     'descuento'       => $seccion_descuento,

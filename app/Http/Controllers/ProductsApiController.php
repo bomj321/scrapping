@@ -16,7 +16,7 @@ class ProductsApiController extends Controller
     {
           $busqueda = request()->busqueda;
 
-          if (empty($busqueda)) {
+          if (empty($busqueda) AND $busqueda == null) {
 
 
              $products = Product::orderBy('descuento', 'DESC')->paginate(4);
@@ -31,20 +31,28 @@ class ProductsApiController extends Controller
 
               $busqueda_filtrada = array_unique($busqueda);
               $array_to_string   = implode(",", $busqueda_filtrada);
-              $string = preg_replace('/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F-\x9F]/u', '', $array_to_string);
 
-
-
-              $products = Product::orderBy('descuento', 'DESC')
-              ->Where('genero', 'Hombre')
+              $products = Product::where(function ($q) use ($busqueda_filtrada) {
+                      foreach ($busqueda_filtrada as $value) {
+                        $q->Where('seccion', 'like', "%{$value}%")
+                          ->Where('genero', 'like', "%{$value}%")
+                          ->Where('precio_filtrada', 'like', "%{$value}%");
+                      }
+                })
+              ->orderBy('descuento', 'DESC')
               ->paginate(4);
+
+            /*  $products = Product::orderBy('descuento', 'DESC')
+              ->Where('seccion', 'LIKE', $array_to_string)
+              ->orWhere('genero', 'LIKE', $array_to_string)              
+              ->paginate(4);*/
 
 
 
               
                return [
                    'products' => $products,
-                   'busqueda' => $string
+                   'busqueda' => $busqueda_filtrada
 
                ];
 

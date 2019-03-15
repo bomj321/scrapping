@@ -46,10 +46,8 @@ export default {
                  }
                }
 
-              //console.log(this.valueSelects);
-              EventBus.$emit('filter',this.valueSelects);
-
-
+              console.log(removedOption.price);
+              EventBus.$emit('filterOut',removedOption.price);
        
       }
   }

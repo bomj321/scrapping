@@ -31,16 +31,17 @@ export default {
         { name: 'Bolsos', section: 'HANDBAG'}, 
         { name: 'Bañadores', section: 'SWIMWEAR'}, 
         { name: 'Camisas / Camisetas / Polos', section: 'SHIRT'}, 
-        { name: 'Deportivas / Zapatos', section: 'SHOES'}, 
+        { name: 'Zapatos', section: 'SHOE'}, 
         { name: 'Faldas', section: 'SKIRT'}, 
         { name: 'Gafas de sol / Monturas', section: 'EYEWEAR'},
 
         { name: 'Pantalones', section: 'PANTS'},
-        { name: 'Perfumes', section: 'ABIS_DRUGSTORE'},
+        { name: 'Perfumes', section: 'ABIS DRUGSTORE'},
         { name: 'Relojes', section: 'WATCH'},
         { name: 'Ropa interior', section: 'SLEEPWEAR'},
         { name: 'Shorts', section: 'SHORTS'},
-        { name: 'Sudaderas / Jerséis', section: 'SWEATER'},        
+        { name: 'Sudaderas / Jerséis', section: 'SWEATER'},
+        { name: 'Artículos Deportivos', section: 'SPORTING GOODS'},  
       ]
     }
   },
@@ -59,8 +60,8 @@ export default {
                  }
                }
 
-              console.log(this.valueSelects);
-              EventBus.$emit('filter',this.valueSelects);
+              console.log(removedOption.section);
+              EventBus.$emit('filterOut',removedOption.section);
 
 
        
