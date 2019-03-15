@@ -29,30 +29,21 @@ class ProductsApiController extends Controller
           
           }else{
 
-              $busqueda_filtrada = array_unique($busqueda);
-              $array_to_string   = implode(",", $busqueda_filtrada);
+              $busqueda_filtrada       = array_unique($busqueda);
+              $array_to_string         = implode(",", $busqueda_filtrada);
+              $stringWithOutCommas     = str_replace(',',' ',$array_to_string);
+            
 
-              $products = Product::where(function ($q) use ($busqueda_filtrada) {
-                      foreach ($busqueda_filtrada as $value) {
-                        $q->Where('seccion', 'like', "%{$value}%")
-                          ->Where('genero', 'like', "%{$value}%")
-                          ->Where('precio_filtrada', 'like', "%{$value}%");
-                      }
-                })
-              ->orderBy('descuento', 'DESC')
-              ->paginate(4);
-
-            /*  $products = Product::orderBy('descuento', 'DESC')
-              ->Where('seccion', 'LIKE', $array_to_string)
-              ->orWhere('genero', 'LIKE', $array_to_string)              
-              ->paginate(4);*/
+              $products = Product::search($stringWithOutCommas)  
+              ->orderBy('descuento', 'DESC')            
+              ->paginate(32);
 
 
 
               
                return [
                    'products' => $products,
-                   'busqueda' => $busqueda_filtrada
+                   'busqueda' => $stringWithOutCommas
 
                ];
 

@@ -1,8 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+
 
 class CreateProductsTable extends Migration
 {
@@ -30,6 +32,9 @@ class CreateProductsTable extends Migration
           $table->dateTime('updated_at');
           $table->dateTime('created_at');
       });
+
+       // Full Text Index
+      DB::statement('ALTER TABLE products ADD FULLTEXT fulltext_index (seccion, marca, talla_filtrada, precio_filtrada, genero)');
     }
 
     /**

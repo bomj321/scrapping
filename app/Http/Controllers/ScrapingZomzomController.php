@@ -68,11 +68,26 @@ class ScrapingZomzomController extends Controller
         /*SECCION DE LA TALLA Y TALLA PARA FILTRAR*/
 
               if (is_numeric($array_products['ofertas'][$b]['talla']) AND $array_products['ofertas'][$b]['talla'] < 34) {
-                $talla_filtrada = '<34';
+
+                 if(strlen($array_products['ofertas'][$b]['talla']) <= 5) {
+                      $talla_filtrada = 'Talla<34';
+                   }
+
+              //  $talla_filtrada = '<34';
               }elseif (is_numeric($array_products['ofertas'][$b]['talla']) AND $array_products['ofertas'][$b]['talla'] > 49) {
-                $talla_filtrada = '49>';
+
+                 if(strlen($array_products['ofertas'][$b]['talla']) <= 5) {
+                       $talla_filtrada = 'Talla49>';
+                   }
+
+               
               }else{
-                $talla_filtrada = str_replace('_',' ',trim($array_products['ofertas'][$b]['talla']));
+
+                 if(strlen($array_products['ofertas'][$b]['talla']) <= 5) {
+                       $talla_filtrada = 'Talla'. str_replace('_',' ',trim($array_products['ofertas'][$b]['talla']));
+                   }
+
+                //$talla_filtrada = str_replace('_',' ',trim($array_products['ofertas'][$b]['talla']));
               }
 
 

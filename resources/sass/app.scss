@@ -108,6 +108,7 @@ hr {
   width: 100%;
   min-height: 280px;
   max-height: 280px;
+  max-width: 353.5px;
 }
 
 .span_precio{
@@ -155,12 +156,30 @@ hr {
 /***BODY***/
 
 
+/*MENSAJE DE SCROLL INFINITO*/
+.infinite-loading-container[data-v-358985eb] {
+    clear: both;
+    text-align: center;
+    padding-top: 50px;
+    font-size: 25px;
+}
 
+/*MENSAJE DE SCROLL INFINITO*/
 
+/***COOKIES***/
+.modal{
+  z-index: 9999;
+}
+.modal p {
+    margin-top: 20px;
+    margin-bottom: 1rem;
+    font-size: 15px;
+}
 
-
-
-
+.modal h2 {
+    font-weight: 800;
+}
+/***COOKIES***/
 
 /*FOOTER*/
 .fixed-bottom{
@@ -177,6 +196,18 @@ hr {
 	cursor: pointer;
 }
 /*FOOTER*/
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -238,3 +269,10 @@ hr {
 
 
 /******************CSS PERSONALIZADO************************/
+
+
+
+
+
+
+

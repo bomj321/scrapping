@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    use FullTextSearch;
 
     protected $table = "products";
     //CAMPOS DE LA TABLA
