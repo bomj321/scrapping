@@ -2,7 +2,7 @@
 <template>
   <div>
        <label class="typo__label">Tipo de Prenda</label>
-      <multiselect v-model="value" :options="options" :multiple="true" :close-on-select="false" :clear-on-select="false" :preserve-search="true" placeholder="Escoja Un Filtro" label="name" track-by="name" :preselect-first="false" @select='ValueSelected' @remove='ValueSelected'>
+      <multiselect v-model="value" :options="options" :multiple="true" :close-on-select="false" :clear-on-select="false" :preserve-search="true" placeholder="Escoja Un Filtro" label="name" track-by="name" :preselect-first="false" @select='ValueSelected' @remove='ValueRemoved'>
 
             <template slot="selection" slot-scope="{ values, search, isOpen }">
               
@@ -20,6 +20,7 @@ export default {
   data () {
     return {
       value: [],
+      valueSelects:[],
       options: [
         { name: 'Hombre'},
         { name: 'Mujer'},       
@@ -29,32 +30,24 @@ export default {
   
   methods: {
       ValueSelected(option) {
+                         this.valueSelects.push(option.name);
+                         //console.log(this.valueSelects);
+                         EventBus.$emit('filter',this.valueSelects);
+      },
 
-         var valueSelects = [];
-/*RETRASO LA FUNCION 300 MILISEGUNDOS PARA QUE APAREZCA EL ELEMENTO SPAN CON LA CLASE MULTISELECT*/        
+      ValueRemoved(removedOption){
 
-          setTimeout(function(){
+                for( var i = 0; i < this.valueSelects.length; i++){ 
+                 if (this.valueSelects[i] === removedOption.name) {
+                       this.valueSelects.splice(i, 1); 
+                 }
+               }
 
-                   $('.multiselect__element span.multiselect__option--selected').map(function()
-                 {
-                         valueSelects.push($(this).text());
-                 }).get();
-
-                     EventBus.$emit('filter',valueSelects);  
-
-           }, 300);
-
-
-/*RETRASO LA FUNCION 300 MILISEGUNDOS PARA QUE APAREZCA EL ELEMENTO SPAN CON LA CLASE MULTISELECT*/         
-        
-        
+              //console.log(this.valueSelects);
+              EventBus.$emit('filter',this.valueSelects);
 
 
-                 
-
-        
-
-
+       
       }
   }
 }

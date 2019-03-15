@@ -1801,7 +1801,9 @@ __webpack_require__.r(__webpack_exports__);
     return {
       products: [],
       page: 0,
-      componentKey: 0
+      componentKey: 0,
+      infiniteId: +new Date(),
+      valueSelectsEmitted: []
     };
   },
   methods: {
@@ -1809,14 +1811,25 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.page++;
+      /**********************EMITIR EVENTOS DESPUES DEL CLICK****************************/
+
+      EventBus.$on('filter', function (valueSelects) {
+        _this.page = 0;
+        _this.products = [];
+        _this.infiniteId += 1;
+
+        if (valueSelects.length == 0 || valueSelects == undefined) {
+          _this.valueSelects = null;
+        } else {
+          _this.valueSelectsEmitted = valueSelects;
+        } // console.log(this.valueSelectsEmitted);                          
+
+      });
+      /**********************EMITIR EVENTOS DESPUES DEL CLICK****************************/
+
       /**************INICIAR EVENTOS*******************/
 
-      var valueSelects = [];
-      $('.multiselect__element span.multiselect__option--selected').map(function () {
-        valueSelects.push($(this).text());
-      }).get();
-
-      if (valueSelects.length == 0 || valueSelects == undefined) {
+      if (this.valueSelectsEmitted.length == 0 || this.valueSelectsEmitted == undefined) {
         var url = 'products?page=' + this.page;
         axios.get(url).then(function (response) {
           var list_products = response.data.products.data;
@@ -1829,7 +1842,7 @@ __webpack_require__.r(__webpack_exports__);
           }
         });
       } else {
-        var array_string = valueSelects.join('&busqueda[]=');
+        var array_string = this.valueSelectsEmitted.join('&busqueda[]=');
         var url = 'products?page=' + this.page + "&busqueda[]=" + array_string;
         axios.get(url).then(function (response) {
           var list_products = response.data.products.data;
@@ -1844,17 +1857,6 @@ __webpack_require__.r(__webpack_exports__);
       }
       /**************INICIAR EVENTOS*******************/
 
-      /**********************EMITIR EVENTOS DESPUES DEL CLICK****************************/
-
-
-      EventBus.$on('filter', function (valueSelects) {
-        //this.$destroy();
-        _this.page = 1;
-        _this.products = [];
-
-        _this.infiniteHandler($state);
-      });
-      /**********************EMITIR EVENTOS DESPUES DEL CLICK****************************/
     }
   }
 });
@@ -1889,6 +1891,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       value: [],
+      valueSelects: [],
       options: [{
         name: 'Hombre'
       }, {
@@ -1898,16 +1901,19 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     ValueSelected: function ValueSelected(option) {
-      var valueSelects = [];
-      /*RETRASO LA FUNCION 300 MILISEGUNDOS PARA QUE APAREZCA EL ELEMENTO SPAN CON LA CLASE MULTISELECT*/
+      this.valueSelects.push(option.name); //console.log(this.valueSelects);
 
-      setTimeout(function () {
-        $('.multiselect__element span.multiselect__option--selected').map(function () {
-          valueSelects.push($(this).text());
-        }).get();
-        EventBus.$emit('filter', valueSelects);
-      }, 300);
-      /*RETRASO LA FUNCION 300 MILISEGUNDOS PARA QUE APAREZCA EL ELEMENTO SPAN CON LA CLASE MULTISELECT*/
+      EventBus.$emit('filter', this.valueSelects);
+    },
+    ValueRemoved: function ValueRemoved(removedOption) {
+      for (var i = 0; i < this.valueSelects.length; i++) {
+        if (this.valueSelects[i] === removedOption.name) {
+          this.valueSelects.splice(i, 1);
+        }
+      } //console.log(this.valueSelects);
+
+
+      EventBus.$emit('filter', this.valueSelects);
     }
   }
 });
@@ -1938,10 +1944,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       value: [],
+      valueSelects: [],
       options: [{
         name: 'Accesorios'
       }, {
@@ -1977,16 +1986,18 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     ValueSelected: function ValueSelected(option) {
-      var valueSelects = [];
-      /*RETRASO LA FUNCION 300 MILISEGUNDOS PARA QUE APAREZCA EL ELEMENTO SPAN CON LA CLASE MULTISELECT*/
+      this.valueSelects.push(option.name);
+      EventBus.$emit('filter', this.valueSelects);
+    },
+    ValueRemoved: function ValueRemoved(removedOption) {
+      for (var i = 0; i < this.valueSelects.length; i++) {
+        if (this.valueSelects[i] === removedOption.name) {
+          this.valueSelects.splice(i, 1);
+        }
+      } //console.log(this.valueSelects);
 
-      setTimeout(function () {
-        $('.multiselect__element span.multiselect__option--selected').map(function () {
-          valueSelects.push($(this).text());
-        }).get();
-        EventBus.$emit('filter', valueSelects);
-      }, 300);
-      /*RETRASO LA FUNCION 300 MILISEGUNDOS PARA QUE APAREZCA EL ELEMENTO SPAN CON LA CLASE MULTISELECT*/
+
+      EventBus.$emit('filter', this.valueSelects);
     }
   }
 });
@@ -2021,6 +2032,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       value: [],
+      valueSelects: [],
       options: [{
         name: 'Menos de 25€'
       }, {
@@ -2034,16 +2046,18 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     ValueSelected: function ValueSelected(option) {
-      var valueSelects = [];
-      /*RETRASO LA FUNCION 300 MILISEGUNDOS PARA QUE APAREZCA EL ELEMENTO SPAN CON LA CLASE MULTISELECT*/
+      this.valueSelects.push(option.name);
+      EventBus.$emit('filter', this.valueSelects);
+    },
+    ValueRemoved: function ValueRemoved(removedOption) {
+      for (var i = 0; i < this.valueSelects.length; i++) {
+        if (this.valueSelects[i] === removedOption.name) {
+          this.valueSelects.splice(i, 1);
+        }
+      } //console.log(this.valueSelects);
 
-      setTimeout(function () {
-        $('.multiselect__element span.multiselect__option--selected').map(function () {
-          valueSelects.push($(this).text());
-        }).get();
-        EventBus.$emit('filter', valueSelects);
-      }, 300);
-      /*RETRASO LA FUNCION 300 MILISEGUNDOS PARA QUE APAREZCA EL ELEMENTO SPAN CON LA CLASE MULTISELECT*/
+
+      EventBus.$emit('filter', this.valueSelects);
     }
   }
 });
@@ -2078,6 +2092,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       value: [],
+      valueSelects: [],
       options: [{
         name: 'Adidas'
       }, {
@@ -2269,16 +2284,18 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     ValueSelected: function ValueSelected(option) {
-      var valueSelects = [];
-      /*RETRASO LA FUNCION 300 MILISEGUNDOS PARA QUE APAREZCA EL ELEMENTO SPAN CON LA CLASE MULTISELECT*/
+      this.valueSelects.push(option.name);
+      EventBus.$emit('filter', this.valueSelects);
+    },
+    ValueRemoved: function ValueRemoved(removedOption) {
+      for (var i = 0; i < this.valueSelects.length; i++) {
+        if (this.valueSelects[i] === removedOption.name) {
+          this.valueSelects.splice(i, 1);
+        }
+      } //console.log(this.valueSelects);
 
-      setTimeout(function () {
-        $('.multiselect__element span.multiselect__option--selected').map(function () {
-          valueSelects.push($(this).text());
-        }).get();
-        EventBus.$emit('filter', valueSelects);
-      }, 300);
-      /*RETRASO LA FUNCION 300 MILISEGUNDOS PARA QUE APAREZCA EL ELEMENTO SPAN CON LA CLASE MULTISELECT*/
+
+      EventBus.$emit('filter', this.valueSelects);
     }
   }
 });
@@ -2308,6 +2325,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       value: [],
+      valueSelects: [],
       options: [{
         tiposTallas: 'Camisas, blusas, tops...',
         tallas: [{
@@ -2456,16 +2474,18 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     ValueSelected: function ValueSelected(option) {
-      var valueSelects = [];
-      /*RETRASO LA FUNCION 300 MILISEGUNDOS PARA QUE APAREZCA EL ELEMENTO SPAN CON LA CLASE MULTISELECT*/
+      this.valueSelects.push(option.name);
+      EventBus.$emit('filter', this.valueSelects);
+    },
+    ValueRemoved: function ValueRemoved(removedOption) {
+      for (var i = 0; i < this.valueSelects.length; i++) {
+        if (this.valueSelects[i] === removedOption.name) {
+          this.valueSelects.splice(i, 1);
+        }
+      } //console.log(this.valueSelects);
 
-      setTimeout(function () {
-        $('.multiselect__element span.multiselect__option--selected').map(function () {
-          valueSelects.push($(this).text());
-        }).get();
-        EventBus.$emit('filter', valueSelects);
-      }, 300);
-      /*RETRASO LA FUNCION 300 MILISEGUNDOS PARA QUE APAREZCA EL ELEMENTO SPAN CON LA CLASE MULTISELECT*/
+
+      EventBus.$emit('filter', this.valueSelects);
     }
   }
 });
@@ -37606,6 +37626,7 @@ var render = function() {
           _c(
             "infinite-loading",
             {
+              attrs: { identifier: _vm.infiniteId },
               on: {
                 distance: function($event) {
                   1
@@ -37676,7 +37697,7 @@ var render = function() {
           "track-by": "name",
           "preselect-first": false
         },
-        on: { select: _vm.ValueSelected, remove: _vm.ValueSelected },
+        on: { select: _vm.ValueSelected, remove: _vm.ValueRemoved },
         scopedSlots: _vm._u([
           {
             key: "selection",
@@ -37745,7 +37766,7 @@ var render = function() {
           "track-by": "name",
           "preselect-first": false
         },
-        on: { select: _vm.ValueSelected, remove: _vm.ValueSelected },
+        on: { select: _vm.ValueSelected, remove: _vm.ValueRemoved },
         scopedSlots: _vm._u([
           {
             key: "selection",
@@ -37814,7 +37835,7 @@ var render = function() {
           "track-by": "name",
           "preselect-first": false
         },
-        on: { select: _vm.ValueSelected, remove: _vm.ValueSelected },
+        on: { select: _vm.ValueSelected, remove: _vm.ValueRemoved },
         scopedSlots: _vm._u([
           {
             key: "selection",

@@ -22,7 +22,7 @@
       <br>
 
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <infinite-loading @distance="1" @infinite="infiniteHandler">
+            <infinite-loading @distance="1" @infinite="infiniteHandler" :identifier="infiniteId">
                 <div slot="no-more">No hay mas Resultados</div>
                 <div slot="no-results">Sin resultados</div>
             </infinite-loading>
@@ -39,26 +39,36 @@
                 return {
                     products: [],
                     page: 0,
-                    componentKey: 0,                    
+                    componentKey: 0, 
+                    infiniteId: +new Date(),
+                    valueSelectsEmitted: []                   
                 }
             },
             methods: {
-              infiniteHandler($state) { 
-
+              infiniteHandler($state){ 
                 this.page++ 
 
+                /**********************EMITIR EVENTOS DESPUES DEL CLICK****************************/
+                      EventBus.$on('filter', (valueSelects) => { 
+                                      this.page = 0;
+                                      this.products = [];
+                                      this.infiniteId += 1;    
 
-/**************INICIAR EVENTOS*******************/
-                var valueSelects = [];
+                          if (valueSelects.length == 0 || valueSelects == undefined ) {
+                                  this.valueSelects = null;
+                          }else{ 
+                              this.valueSelectsEmitted = valueSelects;                         
+                          } 
+                        // console.log(this.valueSelectsEmitted);                          
 
-                $('.multiselect__element span.multiselect__option--selected').map(function()
-                 {
-                         valueSelects.push($(this).text());
-                 }).get();
-
-                 if (valueSelects.length == 0 || valueSelects == undefined ) {
+                   }); 
+                  /**********************EMITIR EVENTOS DESPUES DEL CLICK****************************/
 
 
+
+/**************INICIAR EVENTOS*******************/                          
+
+                 if (this.valueSelectsEmitted.length == 0 || this.valueSelectsEmitted == undefined ) { 
 
                               var url = 'products?page='+this.page
                               axios.get(url)
@@ -75,7 +85,7 @@
                               }) 
 
                    }else{
-                          var array_string = valueSelects.join('&busqueda[]=');
+                          var array_string = this.valueSelectsEmitted.join('&busqueda[]=');
                           var url = 'products?page='+this.page+"&busqueda[]="+array_string   
 
                           axios.get(url)
@@ -94,25 +104,9 @@
 
 
 /**************INICIAR EVENTOS*******************/
-
                  
-/**********************EMITIR EVENTOS DESPUES DEL CLICK****************************/
-                  EventBus.$on('filter', (valueSelects) => { 
 
-                          //this.$destroy();
-                          this.page = 1;
-                          this.products = [];
-                          this.infiniteHandler($state);
-
-
-               });
-
-
-/**********************EMITIR EVENTOS DESPUES DEL CLICK****************************/
-              },
-
-
-                   
+              },               
              
             }
 

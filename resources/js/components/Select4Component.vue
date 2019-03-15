@@ -20,6 +20,7 @@ export default {
   data () {
     return {
       value: [],
+      valueSelects:[],
       options: [
               { name : 'Adidas'},
               { name : 'Asics'},
@@ -136,26 +137,25 @@ export default {
   methods: {
       ValueSelected(option) {
 
-        
-         var valueSelects = [];
-/*RETRASO LA FUNCION 300 MILISEGUNDOS PARA QUE APAREZCA EL ELEMENTO SPAN CON LA CLASE MULTISELECT*/        
-
-          setTimeout(function(){
-
-                   $('.multiselect__element span.multiselect__option--selected').map(function()
-                 {
-                         valueSelects.push($(this).text());
-                 }).get();
-
-                     EventBus.$emit('filter',valueSelects);  
-
-           }, 300);
+                         this.valueSelects.push(option.name);
+                         EventBus.$emit('filter',this.valueSelects);     
 
 
-/*RETRASO LA FUNCION 300 MILISEGUNDOS PARA QUE APAREZCA EL ELEMENTO SPAN CON LA CLASE MULTISELECT*/     
+      },
 
+      ValueRemoved(removedOption){
 
+                for( var i = 0; i < this.valueSelects.length; i++){ 
+                 if (this.valueSelects[i] === removedOption.name) {
+                       this.valueSelects.splice(i, 1); 
+                 }
+               }
+
+              //console.log(this.valueSelects);
+              EventBus.$emit('filter',this.valueSelects);
+       
       }
+
   }
 }
 </script>
