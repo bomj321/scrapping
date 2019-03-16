@@ -11210,7 +11210,7 @@ hr {
 /***BODY***/
 
 .cuerpo_pagina {
-  margin-top: -60px;
+  margin-top: -34px;
 }
 
 .card {
@@ -11245,7 +11245,7 @@ hr {
 }
 
 .card img {
-  width: 40%;
+  width: 65%;
   min-height: 150px;
   max-height: 150px;
   max-width: 200px;
