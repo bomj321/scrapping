@@ -27,6 +27,7 @@
 
 body{
   max-width: 3000px;
+  background-color: white;
 }
 
 /*ESTILOS GENERALES*/
@@ -74,6 +75,9 @@ hr {
 
 
 /***BODY***/
+.cuerpo_pagina{
+  margin-top: -60px;
+}
 .card{
   margin-top: 80px;
   margin-left: 40px;
@@ -106,7 +110,7 @@ hr {
 }
 
 .card img{
-  width: 100%;
+  width: 65%;
   min-height: 150px;
   max-height: 150px;
   max-width: 200px;
@@ -114,7 +118,7 @@ hr {
 
 .span_precio{
   color: red;
-  font-size: 25px;
+  font-size: 20px;
   margin-left: 10px;
   font-weight: 800;
 }
@@ -185,7 +189,8 @@ hr {
 /*FOOTER*/
 .fixed-bottom{
   margin-top: 200px;
-  z-index: 9999;
+  z-index: 9999; 
+  display: none;
 }
 .contenido_footer{
 	width: 100%;
@@ -213,22 +218,26 @@ hr {
 
 
 /****MEDIA QUERYS****/
-
-@media only screen and (max-width: 765px) {
-  .boton_filtros{
-  	margin-top: 30px;
-  	margin-left: 30px;
+@media only screen and (max-width: 1984px) {
+  .circulo_rebaja{
+    margin-left: 10rem;
   }
 
-  .fila_filtros{
-  	margin-left: 20px;
-  	margin-bottom: 100px;
+  .card{
+    width: 72%;  
   }
 }
 
-@media only screen and (max-width: 1652px) {
+@media only screen and (max-width: 1752px) {
   .circulo_rebaja{
     margin-left: 8rem;
+  }
+}
+
+
+@media only screen and (max-width: 1652px) {
+  .circulo_rebaja{
+    margin-left: 7rem;
   }
 }
 
@@ -259,6 +268,18 @@ hr {
 
   .button_product{
       font-size: 15px;
+  }
+}
+
+@media only screen and (max-width: 765px) {
+  .boton_filtros{
+    margin-top: 30px;
+    margin-left: 30px;
+  }
+
+  .fila_filtros{
+    margin-left: 20px;
+    margin-bottom: 100px;
   }
 }
 
@@ -309,7 +330,7 @@ hr {
   }
 
   .contenido_footer{
-    font-size: 10px;
+    font-size: 8px;
     font-weight: 500;
   }
 

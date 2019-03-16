@@ -1797,16 +1797,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       products: [],
       page: 0,
       infiniteId: +new Date(),
-      valueSelectsEmitted: []
+      valueSelectsEmitted: [],
+      perc: null
     };
+  },
+  mounted: function mounted() {
+    var vm = this;
+    window.addEventListener('scroll', function (e) {
+      var scrollPos = window.scrollY;
+      var winHeight = window.innerHeight;
+      var docHeight = document.documentElement.scrollHeight; // instead document.body.clientHeight
+
+      this.perc = 100 * scrollPos / (docHeight - winHeight);
+
+      if (perc > 70) {
+        $(".fixed-bottom").show(1000);
+        ;
+      }
+    });
   },
   methods: {
     infiniteHandler: function infiniteHandler($state) {
@@ -2084,16 +2098,16 @@ __webpack_require__.r(__webpack_exports__);
       valueSelects: [],
       options: [{
         name: 'Menos de 25€',
-        price: 'Menos de 25'
+        price: 'Menosde25'
       }, {
         name: 'De 25€ hasta 50€',
-        price: 'De 25 hasta 50'
+        price: 'De25hasta50'
       }, {
         name: 'De 50€ hasta 100€',
-        price: 'De 50 hasta 100'
+        price: 'De50hasta100'
       }, {
         name: 'Más de 100€',
-        price: 'Mas de 100'
+        price: 'Masde100'
       }]
     };
   },
@@ -37667,10 +37681,10 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c(
-      "div",
-      { staticClass: "row" },
+  return _c(
+    "div",
+    { staticClass: "row cuerpo_pagina" },
+    [
       _vm._l(_vm.products, function(product) {
         return _c(
           "div",
@@ -37705,7 +37719,11 @@ var render = function() {
                   "a",
                   {
                     staticClass: "btn button_product_talla",
-                    attrs: { href: product.link, type: "button" }
+                    attrs: {
+                      href: product.link,
+                      type: "button",
+                      target: "_blank"
+                    }
                   },
                   [_vm._v(" " + _vm._s(product.talla))]
                 ),
@@ -37724,7 +37742,11 @@ var render = function() {
                   "a",
                   {
                     staticClass: "btn btn-dark btn-block btn-lg button_product",
-                    attrs: { href: product.link, type: "button" }
+                    attrs: {
+                      href: product.link,
+                      type: "button",
+                      target: "_blank"
+                    }
                   },
                   [_vm._v("COMPRAR "), _vm._m(0, true)]
                 )
@@ -37733,10 +37755,7 @@ var render = function() {
           ]
         )
       }),
-      0
-    ),
-    _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
+      _vm._v(" "),
       _c(
         "div",
         { staticClass: "col-lg-12 col-md-12 col-sm-12 col-xs-12" },
@@ -37765,8 +37784,9 @@ var render = function() {
         ],
         1
       )
-    ])
-  ])
+    ],
+    2
+  )
 }
 var staticRenderFns = [
   function() {

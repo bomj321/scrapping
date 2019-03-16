@@ -22,10 +22,10 @@ export default {
       value: [],
       valueSelects:[],
       options: [
-         { name: 'Menos de 25€',price: 'Menos de 25'},
-         { name: 'De 25€ hasta 50€',price: 'De 25 hasta 50' },
-         { name: 'De 50€ hasta 100€',price: 'De 50 hasta 100'},
-         { name: 'Más de 100€',price: 'Mas de 100'},      
+         { name: 'Menos de 25€',price: 'Menosde25'},
+         { name: 'De 25€ hasta 50€',price: 'De25hasta50' },
+         { name: 'De 50€ hasta 100€',price: 'De50hasta100'},
+         { name: 'Más de 100€',price: 'Masde100'},      
       ]
     }
   },

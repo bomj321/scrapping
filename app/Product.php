@@ -24,17 +24,14 @@ class Product extends Model
         'precio_oferta',
         'precio_filtrada',
         'genero',
+        'filtros',
     ];
 
     /**
      * The columns of the full text index
      */
-    protected $searchable = [
-        'seccion',
-        'marca',
-        'talla_filtrada',
-        'precio_filtrada',
-        'genero',
+    protected $searchable = [       
+        'filtros',
     ];
 
 

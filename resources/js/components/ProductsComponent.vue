@@ -1,6 +1,5 @@
 <template>
-  <div class="container">
-    <div class="row">
+    <div class="row cuerpo_pagina">
           <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" v-for="product in products">
                   <div class="card text-center">
                       <div class="card-header">
@@ -13,16 +12,14 @@
                           </a>
                         </div>
                       <div class="card-footer text-muted">
-                        <a v-bind:href="product.link" type="button" class="btn button_product_talla"> {{ product.talla }}</a>
+                        <a v-bind:href="product.link" type="button" class="btn button_product_talla" target="_blank"> {{ product.talla }}</a>
                         <p><span class="precio_linea"> {{ product.precio_anterior }}$</span> <span class="span_precio">{{ product.precio_oferta }}$</span></p>
-                        <a v-bind:href="product.link" type="button" class="btn btn-dark btn-block btn-lg button_product">COMPRAR <span><i class="fab fa-amazon"></i></span></a>
+                        <a v-bind:href="product.link" type="button" class="btn btn-dark btn-block btn-lg button_product" target="_blank">COMPRAR <span><i class="fab fa-amazon"></i></span></a>
                       </div>
                     </div>
           </div> 
-  </div>
 
-  <div class="row">
-     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <infinite-loading @distance="1" @infinite="infiniteHandler" :identifier="infiniteId">
                 <div slot="no-more">No hay mas Resultados</div>
                 <div slot="no-results">Sin resultados</div>
@@ -30,7 +27,8 @@
       </div>
   </div>
 
-  </div>
+ 
+
   
 </template>
 
@@ -43,9 +41,24 @@
                     products: [],
                     page: 0,
                     infiniteId: +new Date(),
-                    valueSelectsEmitted: [],                   
+                    valueSelectsEmitted: [], 
+                    perc: null                  
                 }
+            },           
+            mounted:function(){
+              var vm = this
+              window.addEventListener('scroll', function(e){
+                var scrollPos = window.scrollY
+                var winHeight = window.innerHeight
+                var docHeight = document.documentElement.scrollHeight // instead document.body.clientHeight
+                this.perc = 100 * scrollPos / (docHeight - winHeight)                
+
+                if (perc > 70) {
+                    $(".fixed-bottom").show(1000);;
+                }
+              })
             },
+
             methods: {
               infiniteHandler($state){ 
                 this.page++ 

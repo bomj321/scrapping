@@ -9,6 +9,8 @@ use App\Http\Requests;
 use GuzzleHttp\Client;
 use App\Product;
 
+ini_set('max_execution_time', 620);
+
 class ScrapingZomzomController extends Controller
 {
 
@@ -19,7 +21,7 @@ class ScrapingZomzomController extends Controller
                 DB::table('products')->truncate();
 
                   $productsArray = array();
-                 for ($a=0; $a < 110 ; $a++) {
+                 for ($a=0; $a < 16 ; $a++) {
 
                   $response = $client->request('POST', 'https://www.zoomzon.es/getOfertasFiltradas', [
                       'json'    => ['page' => $a],
@@ -61,8 +63,10 @@ class ScrapingZomzomController extends Controller
         /*SECCION DEL DESCUENTO*/
 
         /*SECCION DEL LINK*/
-
-                $productsArray['link'][] = $array_products['ofertas'][$b]['link'];
+       // https://www.amazon.es/New-Balance-Zapatillas-Hombre-Pigment/dp/B07DFW1QTH?psc=1&SubscriptionId=AKIAIAUHJO5LQI3FRXZA&tag=prealfer-21&linkCode=xm2&camp=2025&creative=165953&creativeASIN=B07DFW1QTH  ropa037-21              
+              $arrayCutted = strstr($array_products['ofertas'][$b]['link'], 'SubscriptionId', true);
+              $arrayWithTag = $arrayCutted.'tag=ropa037-21';
+              $productsArray['link'][] = $arrayWithTag;
         /*SECCION DEL LINK*/
 
         /*SECCION DE LA TALLA Y TALLA PARA FILTRAR*/
@@ -104,13 +108,13 @@ class ScrapingZomzomController extends Controller
                $precio_range = $array_products['ofertas'][$b]['precio_oferta'];
 
                if ($precio_range < 25) {
-                  $precio_range = 'Menos de 25';
+                  $precio_range = 'Menosde25';
                 }elseif($precio_range >= 25 AND $precio_range <= 50){
-                  $precio_range = 'De 25 hasta 50';
+                  $precio_range = 'De25hasta50';
                 }elseif($precio_range >= 50 AND $precio_range <= 100){
-                  $precio_range = 'De 50 hasta 100';
+                  $precio_range = 'De50hasta100';
                 }else{
-                  $precio_range = 'Mas de 100';
+                  $precio_range = 'Masde100';
                 } 
 
                 $productsArray['precio_filtrada'][] = $precio_range;
@@ -126,6 +130,18 @@ class ScrapingZomzomController extends Controller
          /*SECCION DEL GENERO*/
                 $productsArray['genero'][] = $array_products['ofertas'][$b]['genero'];
         /*SECCION DEL GENERO*/
+
+        /*FILTROS*/
+                $arraySeccion           = str_replace('_',' ',$product_seccion);
+                $arrayMarca             = $array_products['ofertas'][$b]['marca'];
+                $arrayTalla_filtrada    = $talla_filtrada;
+                $arrayPrecio_filtrada   = $precio_range;
+                $arrayGenero            = $array_products['ofertas'][$b]['genero'];
+
+                $productsArray['filtros'][] = $arraySeccion.' '.$arrayMarca.' '.$arrayTalla_filtrada.' '.$arrayPrecio_filtrada.' '.$arrayGenero;
+        /*FILTROS*/
+
+
                  }
 
       /******************ARRAY DE PRODUCTOS*******************************/
@@ -149,6 +165,7 @@ class ScrapingZomzomController extends Controller
                $seccion_precio_oferta   = $productsArray['precio_oferta'][$c];
                $seccion_precio_filtrada = $productsArray['precio_filtrada'][$c];
                $seccion_genero          = $productsArray['genero'][$c];
+               $seccion_filtros         = $productsArray['filtros'][$c];
 
 
                DB::table('products')->insert(
@@ -165,6 +182,7 @@ class ScrapingZomzomController extends Controller
                     'precio_oferta'   => $seccion_precio_oferta,
                     'precio_filtrada' => $seccion_precio_filtrada,
                     'genero'          => $seccion_genero,
+                    'filtros'         => $seccion_filtros,
                     'updated_at'      => date("Y-m-d H:i:s"),
                     'created_at'      => date("Y-m-d H:i:s"),
                  ]

@@ -29,12 +29,13 @@ class CreateProductsTable extends Migration
           $table->float('precio_oferta');
           $table->string('precio_filtrada');
           $table->string('genero');
+          $table->string('filtros');
           $table->dateTime('updated_at');
           $table->dateTime('created_at');
       });
 
        // Full Text Index
-      DB::statement('ALTER TABLE products ADD FULLTEXT fulltext_index (seccion, marca, talla_filtrada, precio_filtrada, genero)');
+      DB::statement('ALTER TABLE products ADD FULLTEXT fulltext_index (filtros)');
     }
 
     /**
