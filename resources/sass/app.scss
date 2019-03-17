@@ -19,7 +19,7 @@
 /******************CSS PERSONALIZADO************************/
 /*ESTILOS GENERALES*/
 .multiselect__content-wrapper{
-  width: 118% !important;
+   width: 120% !important;
 }
 .container-fluid{
   margin-bottom: 200px;
@@ -40,16 +40,16 @@ body{
 }
 
 .navbar p{
-	color: white;
-	margin-bottom: 0rem;
+  color: white;
+  margin-bottom: 0rem;
 }
 
 .titulo_subheader{
-	margin-top: 20px;
+  margin-top: 20px;
 }
 
 .boton_ordenar{
-	min-width: 200px;
+  min-width: 200px;
 }
 
 hr {
@@ -67,6 +67,10 @@ hr {
 
 .multiselect__content{
   z-index: 8000;
+}
+
+.multiselect__placeholder {
+        font-size: 11px;
 }
 
 
@@ -110,10 +114,10 @@ hr {
 }
 
 .card img{
-  width: 65%;
-  min-height: 150px;
-  max-height: 150px;
-  max-width: 200px;
+    width: 100%;
+    min-height: 200px;
+    max-height: 200px;
+    max-width: 200px;
 }
 
 .span_precio{
@@ -184,6 +188,10 @@ hr {
 .modal h2 {
     font-weight: 800;
 }
+
+.modal-title {   
+    font-weight: 600;
+}
 /***COOKIES***/
 
 /*FOOTER*/
@@ -193,13 +201,13 @@ hr {
   display: none;
 }
 .contenido_footer{
-	width: 100%;
-	text-align: center;
+  width: 100%;
+  text-align: center;
 }
 
 .contenido_footer a{
-	color: white;
-	cursor: pointer;
+  color: white;
+  cursor: pointer;
 }
 /*FOOTER*/
 
@@ -243,11 +251,40 @@ hr {
 
 @media only screen and (max-width: 1300px) {
   .circulo_rebaja{
-    margin-left: 6rem;
+       margin-left: 5rem;
+  }
+
+  .button_product{
+      font-size: 15px;
   }
 }
 
-@media only screen and (max-width: 960px) {
+@media screen and (min-width: 995px) and (max-width:1123px) {
+
+ .button_product{
+      font-size: 13px;
+  }
+  
+ .card img {
+    width: 94%;
+    min-height: 106px;
+    max-height: 101px;
+    max-width: 200px;
+  }
+
+  .circulo_rebaja {
+    margin-left: 4rem;
+}
+
+.card {
+    width: 72%;
+    max-height: 388px;
+    min-height: 388px;
+}
+
+}
+
+@media only screen and (max-width: 980px) {
   .circulo_rebaja{
     margin-left: 10rem;
   }
@@ -306,8 +343,15 @@ hr {
 
   .card{
       width: 60%;
-      height: 82%;
+      height: 85%;
   }
+
+  .card img{
+    width: 65%;
+    min-height: 150px;
+    max-height: 150px;
+    
+}
 
 
 }

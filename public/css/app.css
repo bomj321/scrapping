@@ -11154,7 +11154,7 @@ fieldset[disabled] .multiselect {
 /*ESTILOS GENERALES*/
 
 .multiselect__content-wrapper {
-  width: 118% !important;
+  width: 120% !important;
 }
 
 .container-fluid {
@@ -11205,6 +11205,10 @@ hr {
   z-index: 8000;
 }
 
+.multiselect__placeholder {
+  font-size: 11px;
+}
+
 /***FILTROS***/
 
 /***BODY***/
@@ -11245,9 +11249,9 @@ hr {
 }
 
 .card img {
-  width: 65%;
-  min-height: 150px;
-  max-height: 150px;
+  width: 100%;
+  min-height: 200px;
+  max-height: 200px;
   max-width: 200px;
 }
 
@@ -11323,6 +11327,10 @@ hr {
   font-weight: 800;
 }
 
+.modal-title {
+  font-weight: 600;
+}
+
 /***COOKIES***/
 
 /*FOOTER*/
@@ -11371,11 +11379,38 @@ hr {
 
 @media only screen and (max-width: 1300px) {
   .circulo_rebaja {
-    margin-left: 6rem;
+    margin-left: 5rem;
+  }
+
+  .button_product {
+    font-size: 15px;
   }
 }
 
-@media only screen and (max-width: 960px) {
+@media screen and (min-width: 995px) and (max-width: 1123px) {
+  .button_product {
+    font-size: 13px;
+  }
+
+  .card img {
+    width: 94%;
+    min-height: 106px;
+    max-height: 101px;
+    max-width: 200px;
+  }
+
+  .circulo_rebaja {
+    margin-left: 4rem;
+  }
+
+  .card {
+    width: 72%;
+    max-height: 388px;
+    min-height: 388px;
+  }
+}
+
+@media only screen and (max-width: 980px) {
   .circulo_rebaja {
     margin-left: 10rem;
   }
@@ -11430,7 +11465,13 @@ hr {
 
   .card {
     width: 60%;
-    height: 82%;
+    height: 85%;
+  }
+
+  .card img {
+    width: 65%;
+    min-height: 150px;
+    max-height: 150px;
   }
 }
 

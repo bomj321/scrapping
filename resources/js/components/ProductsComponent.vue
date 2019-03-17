@@ -11,8 +11,7 @@
                         <div class="card-body">
                           <a v-bind:href="product.link" target="_blank">
                             <img  v-bind:src="product.imagen">
-                          </a>
-                          {{ product.relevance_score }}
+                          </a>                          
                         </div>
                       <div class="card-footer text-muted">
                         <a v-bind:href="product.link" type="button" class="btn button_product_talla" target="_blank"> {{ product.talla }}</a>
@@ -65,23 +64,6 @@
                     $(".fixed-bottom").show(1000);;
                 }
               })
-            },computed:{
-
-              SumValue: function () {                                  
-                var numbers = [4, 9, 16, 25];
-                var demoP = document.getElementById("demo");
-
-                function myFunction(item, index) {
-  demoP.innerHTML = demoP.innerHTML + "index[" + index + "]: " + item + "<br>"; 
-}
-
-                   return number.foreach(myFunction);
-
-
-
-              }
-
-
             },methods: {
               infiniteHandler($state){ 
                 this.page++ 

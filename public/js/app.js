@@ -1801,7 +1801,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1829,18 +1828,6 @@ __webpack_require__.r(__webpack_exports__);
         ;
       }
     });
-  },
-  computed: {
-    SumValue: function SumValue() {
-      var numbers = [4, 9, 16, 25];
-      var demoP = document.getElementById("demo");
-
-      function myFunction(item, index) {
-        demoP.innerHTML = demoP.innerHTML + "index[" + index + "]: " + item + "<br>";
-      }
-
-      return number.foreach(myFunction);
-    }
   },
   methods: {
     infiniteHandler: function infiniteHandler($state) {
@@ -37737,12 +37724,7 @@ var render = function() {
               _c("div", { staticClass: "card-body" }, [
                 _c("a", { attrs: { href: product.link, target: "_blank" } }, [
                   _c("img", { attrs: { src: product.imagen } })
-                ]),
-                _vm._v(
-                  "\n                        " +
-                    _vm._s(product.relevance_score) +
-                    "\n                      "
-                )
+                ])
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "card-footer text-muted" }, [
