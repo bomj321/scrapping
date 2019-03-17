@@ -1797,6 +1797,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1804,7 +1809,10 @@ __webpack_require__.r(__webpack_exports__);
       page: 0,
       infiniteId: +new Date(),
       valueSelectsEmitted: [],
-      perc: null
+      perc: null,
+      data: null,
+      relevanceScore: null,
+      numbers: []
     };
   },
   mounted: function mounted() {
@@ -1821,6 +1829,18 @@ __webpack_require__.r(__webpack_exports__);
         ;
       }
     });
+  },
+  computed: {
+    SumValue: function SumValue() {
+      var numbers = [4, 9, 16, 25];
+      var demoP = document.getElementById("demo");
+
+      function myFunction(item, index) {
+        demoP.innerHTML = demoP.innerHTML + "index[" + index + "]: " + item + "<br>";
+      }
+
+      return number.foreach(myFunction);
+    }
   },
   methods: {
     infiniteHandler: function infiniteHandler($state) {
@@ -1846,6 +1866,8 @@ __webpack_require__.r(__webpack_exports__);
       });
       /***********************EVENTO PARA LLENAR LOS FILTROS************************************/
 
+      /****************************************EVENTO PARA VACIAR LOS FILTROS**********************/
+
       EventBus.$on('filterOut', function (valueSelects) {
         _this.page = 0;
         _this.products = [];
@@ -1861,17 +1883,17 @@ __webpack_require__.r(__webpack_exports__);
           }
         }
       });
-      /**********************EMITIR EVENTOS DESPUES DEL CLICK****************************/
-      //console.log(this.valueSelectsEmitted); 
+      /****************************************EVENTO PARA VACIAR LOS FILTROS**********************/
 
-      /**************INICIAR EVENTOS*******************/
+      /**********************EMITIR EVENTOS DESPUES DEL CLICK****************************/
+
+      /**************INICIAR PAGINACION*******************/
 
       /****ELIMINAR DUPLICADOS DE LOS FILTROS YA QUE GENERA CONSULTA REPETIDA****/
 
       var valueSelectedWithOutDuplicates = this.valueSelectsEmitted.filter(function (valor, indiceActual, arreglo) {
         return arreglo.indexOf(valor) === indiceActual;
       });
-      console.log(valueSelectedWithOutDuplicates + ' FILTER');
       /****ELIMINAR DUPLICADOS DE LOS FILTROS YA QUE GENERA CONSULTA REPETIDA****/
 
       if (valueSelectedWithOutDuplicates.length == 0 || valueSelectedWithOutDuplicates == undefined) {
@@ -1880,6 +1902,7 @@ __webpack_require__.r(__webpack_exports__);
           var list_products = response.data.products.data;
 
           if (list_products.length) {
+            _this.data = response.data.products.total;
             _this.products = _this.products.concat(list_products);
             $state.loaded();
           } else {
@@ -1893,6 +1916,7 @@ __webpack_require__.r(__webpack_exports__);
           var list_products = response.data.products.data;
 
           if (list_products.length) {
+            _this.data = response.data.products.total;
             _this.products = _this.products.concat(list_products);
             $state.loaded();
           } else {
@@ -1900,7 +1924,7 @@ __webpack_require__.r(__webpack_exports__);
           }
         });
       }
-      /**************INICIAR EVENTOS*******************/
+      /**************INICIAR PAGINACION*******************/
 
     }
   }
@@ -37685,6 +37709,8 @@ var render = function() {
     "div",
     { staticClass: "row cuerpo_pagina" },
     [
+      _c("div", { attrs: { id: "demo" } }),
+      _vm._v(" "),
       _vm._l(_vm.products, function(product) {
         return _c(
           "div",
@@ -37711,7 +37737,12 @@ var render = function() {
               _c("div", { staticClass: "card-body" }, [
                 _c("a", { attrs: { href: product.link, target: "_blank" } }, [
                   _c("img", { attrs: { src: product.imagen } })
-                ])
+                ]),
+                _vm._v(
+                  "\n                        " +
+                    _vm._s(product.relevance_score) +
+                    "\n                      "
+                )
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "card-footer text-muted" }, [

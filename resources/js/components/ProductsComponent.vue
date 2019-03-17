@@ -1,5 +1,7 @@
 <template>
     <div class="row cuerpo_pagina">
+      <div id="demo">
+      </div>
           <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12" v-for="product in products">
                   <div class="card text-center">
                       <div class="card-header">
@@ -10,6 +12,7 @@
                           <a v-bind:href="product.link" target="_blank">
                             <img  v-bind:src="product.imagen">
                           </a>
+                          {{ product.relevance_score }}
                         </div>
                       <div class="card-footer text-muted">
                         <a v-bind:href="product.link" type="button" class="btn button_product_talla" target="_blank"> {{ product.talla }}</a>
@@ -17,7 +20,9 @@
                         <a v-bind:href="product.link" type="button" class="btn btn-dark btn-block btn-lg button_product" target="_blank">COMPRAR <span><i class="fab fa-amazon"></i></span></a>
                       </div>
                     </div>
-          </div> 
+          </div>
+         
+
 
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <infinite-loading @distance="1" @infinite="infiniteHandler" :identifier="infiniteId">
@@ -42,7 +47,10 @@
                     page: 0,
                     infiniteId: +new Date(),
                     valueSelectsEmitted: [], 
-                    perc: null                  
+                    perc: null,
+                    data: null,
+                    relevanceScore:null,
+                    numbers: []                 
                 }
             },           
             mounted:function(){
@@ -57,13 +65,30 @@
                     $(".fixed-bottom").show(1000);;
                 }
               })
-            },
+            },computed:{
 
-            methods: {
+              SumValue: function () {                                  
+                var numbers = [4, 9, 16, 25];
+                var demoP = document.getElementById("demo");
+
+                function myFunction(item, index) {
+  demoP.innerHTML = demoP.innerHTML + "index[" + index + "]: " + item + "<br>"; 
+}
+
+                   return number.foreach(myFunction);
+
+
+
+              }
+
+
+            },methods: {
               infiniteHandler($state){ 
                 this.page++ 
 
     /**********************EMITIR EVENTOS DESPUES DEL CLICK****************************/
+
+
 /***********************EVENTO PARA LLENAR LOS FILTROS************************************/    
                       EventBus.$on('filter', (valueSelects) => { 
                                       this.page = 0;
@@ -84,6 +109,10 @@
                    }); 
 
 /***********************EVENTO PARA LLENAR LOS FILTROS************************************/
+
+/****************************************EVENTO PARA VACIAR LOS FILTROS**********************/
+
+
                      EventBus.$on('filterOut', (valueSelects) => { 
                                       this.page = 0;
                                       this.products = [];
@@ -101,57 +130,58 @@
                                   }                                          
                               
                             
-                   });    
+                   }); 
 
+
+/****************************************EVENTO PARA VACIAR LOS FILTROS**********************/
 
     /**********************EMITIR EVENTOS DESPUES DEL CLICK****************************/
 
- //console.log(this.valueSelectsEmitted); 
-
-/**************INICIAR EVENTOS*******************/ 
+/**************INICIAR PAGINACION*******************/ 
 
 /****ELIMINAR DUPLICADOS DE LOS FILTROS YA QUE GENERA CONSULTA REPETIDA****/
   let valueSelectedWithOutDuplicates = this.valueSelectsEmitted.filter((valor, indiceActual, arreglo) => arreglo.indexOf(valor) === indiceActual);
-  console.log(valueSelectedWithOutDuplicates + ' FILTER');
 /****ELIMINAR DUPLICADOS DE LOS FILTROS YA QUE GENERA CONSULTA REPETIDA****/
 
 
-                 if (valueSelectedWithOutDuplicates.length == 0 || valueSelectedWithOutDuplicates == undefined) { 
+                         if (valueSelectedWithOutDuplicates.length == 0 || valueSelectedWithOutDuplicates == undefined) { 
 
-                              var url = 'products?page='+this.page
-                              axios.get(url)
-                              .then(response => {
+                                      var url = 'products?page='+this.page
+                                      axios.get(url)
+                                      .then(response => {
 
-                                  let list_products = response.data.products.data;
+                                          let list_products = response.data.products.data;
 
-                                  if(list_products.length){
-                                      this.products = this.products.concat(list_products);
-                                      $state.loaded();
-                                  }else{
-                                      $state.complete();
-                                  }
-                              }) 
+                                          if(list_products.length){
+                                              this.data = response.data.products.total;
+                                              this.products = this.products.concat(list_products);
+                                              $state.loaded();
+                                          }else{
+                                              $state.complete();
+                                          }
+                                      }) 
 
-                   }else{
-                          var array_string = valueSelectedWithOutDuplicates.join('&busqueda[]=');
-                          var url = 'products?page='+this.page+"&busqueda[]="+array_string   
+                         }else{
+                                var array_string = valueSelectedWithOutDuplicates.join('&busqueda[]=');
+                                var url = 'products?page='+this.page+"&busqueda[]="+array_string   
 
-                          axios.get(url)
-                          .then(response => {
+                                axios.get(url)
+                                .then(response => {
 
-                              let list_products = response.data.products.data;
+                                    let list_products = response.data.products.data;
 
-                              if(list_products.length){
-                                  this.products = this.products.concat(list_products);
-                                  $state.loaded();
-                              }else{
-                                  $state.complete();
-                              }
-                          })
-                  }                        
+                                    if(list_products.length){
+                                        this.data = response.data.products.total;
+                                        this.products = this.products.concat(list_products);
+                                        $state.loaded();
+                                    }else{
+                                        $state.complete();
+                                    }
+                                })
+                        }                        
 
 
-/**************INICIAR EVENTOS*******************/
+/**************INICIAR PAGINACION*******************/
                  
 
               },               
