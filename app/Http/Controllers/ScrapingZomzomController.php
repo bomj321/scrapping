@@ -65,7 +65,12 @@ class ScrapingZomzomController extends Controller
         /*SECCION DEL LINK*/
        // https://www.amazon.es/New-Balance-Zapatillas-Hombre-Pigment/dp/B07DFW1QTH?psc=1&SubscriptionId=AKIAIAUHJO5LQI3FRXZA&tag=prealfer-21&linkCode=xm2&camp=2025&creative=165953&creativeASIN=B07DFW1QTH  ropa037-21              
               $arrayCutted = strstr($array_products['ofertas'][$b]['link'], 'SubscriptionId', true);
-              $arrayWithTag = $arrayCutted.'tag=ropa037-21';
+              if (strpos($arrayCutted, 'psc=1&')) {
+                $arrayWithTag = $arrayCutted.'tag=ropa037-21';
+              }else{
+                $arrayWithTag = $arrayCutted.'psc=1&tag=ropa037-21';
+              }
+              
               $productsArray['link'][] = $arrayWithTag;
         /*SECCION DEL LINK*/
 
@@ -118,7 +123,7 @@ class ScrapingZomzomController extends Controller
                 } 
 
                 $productsArray['precio_filtrada'][] = $precio_range;
-                $productsArray['precio_oferta'][]   = $array_products['ofertas'][$b]['precio_oferta'];
+                $productsArray['precio_oferta'][]   = number_format($array_products['ofertas'][$b]['precio_oferta'], 2, '.', ''); 
 
 
 

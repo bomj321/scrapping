@@ -39,6 +39,10 @@ body{
   margin-right: -15px;
 }
 
+.navbar center{
+  width: 100%;
+}
+
 .navbar p{
   color: white;
   margin-bottom: 0rem;
@@ -194,6 +198,16 @@ hr {
 }
 /***COOKIES***/
 
+/***LEGAL***/
+.modal-legal{
+  h4{
+    font-weight: 800;
+  }
+}
+
+/***LEGAL***/
+
+
 /*FOOTER*/
 .fixed-bottom{
   margin-top: 200px;
@@ -205,8 +219,11 @@ hr {
   text-align: center;
 }
 
-.contenido_footer a{
+.contenido_footer{
   color: white;
+}
+
+.contenido_footer a{
   cursor: pointer;
 }
 /*FOOTER*/

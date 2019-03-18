@@ -37743,11 +37743,11 @@ var render = function() {
                 _vm._v(" "),
                 _c("p", [
                   _c("span", { staticClass: "precio_linea" }, [
-                    _vm._v(" " + _vm._s(product.precio_anterior) + "$")
+                    _vm._v(" " + _vm._s(product.precio_anterior) + "€")
                   ]),
                   _vm._v(" "),
                   _c("span", { staticClass: "span_precio" }, [
-                    _vm._v(_vm._s(product.precio_oferta) + "$")
+                    _vm._v(_vm._s(product.precio_oferta) + "€")
                   ])
                 ]),
                 _vm._v(" "),

@@ -1,8 +1,11 @@
 <!-- As a heading -->
-<nav class="navbar navbar-dark bg-dark">
-	<p><span><i class="fas fa-tags"></i></span> Las mejores ofertas en moda a trav&eacute;s de Amazon</p>
-	<p><span><i class="fas fa-user-shield"></i></span> Compra segura a través de Amazon.</p>
-	<p><span><i class="fas fa-truck"></i></span> Envíos y devoluciones gratuitas si eres cliente prime</p>
+<nav class="navbar navbar-dark bg-dark">	
+		<center>
+			<p>
+			    <span><i class="fas fa-tags"></i></span> Las mejores ofertas en moda a trav&eacute;s de Amazon
+		   </p>
+	  </center>	
+		
 
 </nav>
 

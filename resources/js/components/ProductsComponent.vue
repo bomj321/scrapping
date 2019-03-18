@@ -15,7 +15,7 @@
                         </div>
                       <div class="card-footer text-muted">
                         <a v-bind:href="product.link" type="button" class="btn button_product_talla" target="_blank"> {{ product.talla }}</a>
-                        <p><span class="precio_linea"> {{ product.precio_anterior }}$</span> <span class="span_precio">{{ product.precio_oferta }}$</span></p>
+                        <p><span class="precio_linea"> {{ product.precio_anterior }}€</span> <span class="span_precio">{{ product.precio_oferta }}€</span></p>
                         <a v-bind:href="product.link" type="button" class="btn btn-dark btn-block btn-lg button_product" target="_blank">COMPRAR <span><i class="fab fa-amazon"></i></span></a>
                       </div>
                     </div>
