@@ -1,11 +1,16 @@
 <!-- As a heading -->
-<nav class="navbar navbar-dark bg-dark">	
-		<center>
+<nav class="navbar navbar-dark bg-dark">
+	<div class="float-left">
 			<p>
 			    <span><i class="fas fa-tags"></i></span> Las mejores ofertas en moda a trav&eacute;s de Amazon
 		   </p>
-	  </center>	
-		
+	</div>
+
+	<div class="float-right">
+			<p>
+			    <span><i class="fas fa-euro-sign"></i></span> Los precios var&iacute;an seg&uacute;n el Stock
+		   </p>
+	</div>	
 
 </nav>
 
